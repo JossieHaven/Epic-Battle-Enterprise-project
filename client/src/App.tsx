@@ -1,5 +1,5 @@
 import './App.css';
-import NavigationBar from './components/NavigationBar.tsx'
+import NavigationBar from './components/NavBar.tsx'
 import {
   ApolloClient,
   InMemoryCache,
