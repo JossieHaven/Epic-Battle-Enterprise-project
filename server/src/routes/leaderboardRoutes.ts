@@ -3,7 +3,7 @@ import Leaderboard from "../models/leaderboardModel";
 
 const router = Router();
 
-router.get("/", async (req: Request, res: Response) => {
+router.get("/", async (_req: Request, res: Response) => {
     try {
         const characters = await Leaderboard.find().sort({ total_power: -1 }).limit(10);
         res.json(characters);

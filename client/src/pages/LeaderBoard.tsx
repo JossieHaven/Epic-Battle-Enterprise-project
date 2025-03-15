@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchLeaderboard } from "../services/api";
+import { fetchLeaderboard } from "../services/api.tsx";
 import "../styles/Leaderboard.css";
 
 interface Character {
