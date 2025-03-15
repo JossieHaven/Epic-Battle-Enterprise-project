@@ -5,7 +5,7 @@ const router = Router();
 
 router.get("/", async (_req: Request, res: Response) => {
     try {
-        const characters = await Leaderboard.find().sort({ total_power: -1 }).limit(10);
+        const characters = await Leaderboard.find().sort({ power: -1 }).limit(10);
         res.json(characters);
     } catch (error) {
         res.status(500).json({ error: "Failed to fetch leaderboard" });
