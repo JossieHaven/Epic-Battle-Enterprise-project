@@ -9,7 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Leaderboard from "./pages/LeaderBoard";
+// import Leaderboard from "./pages/LeaderBoard";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -43,7 +43,7 @@ function App() {
           <NavigationBar />
           <div className="container">
             <Routes>
-              <Route path="/leaderboard" element={<Leaderboard />} />
+              {/* <Route path="/leaderboard" element={<Leaderboard />} /> */}
               <Route path="*" element={<Outlet />} />
             </Routes>
           </div>
