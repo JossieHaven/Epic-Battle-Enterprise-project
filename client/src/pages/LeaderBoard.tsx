@@ -9,12 +9,12 @@ interface Character {
   strength: number;
   speed: number;
   intelligence: number;
-  total_power: number;
+  power: number;
 }
 
 function Leaderboard() {
   const [characters, setCharacters] = useState<Character[]>([]);
-  const [sortBy, setSortBy] = useState<string>("total_power");
+  const [sortBy, setSortBy] = useState<string>("power");
   const [alignment, setAlignment] = useState<string>("all");
 
   useEffect(() => {
@@ -37,7 +37,7 @@ function Leaderboard() {
       {/* Sorting Dropdown */}
       <label>Sort By:</label>
       <select value={sortBy} onChange={(e) => setSortBy(e.target.value)}>
-        <option value="total_power">Overall Power</option>
+        <option value="power">Overall Power</option>
         <option value="strength">Strength</option>
         <option value="speed">Speed</option>
         <option value="intelligence">Intelligence</option>
@@ -74,7 +74,7 @@ function Leaderboard() {
                 <td>{char.strength}</td>
                 <td>{char.speed}</td>
                 <td>{char.intelligence}</td>
-                <td>{char.total_power}</td>
+                <td>{char.power}</td>
               </tr>
             ))
           ) : (

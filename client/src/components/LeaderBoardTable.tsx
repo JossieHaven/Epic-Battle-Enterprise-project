@@ -3,7 +3,7 @@ import axios from "axios";
 
 function Leaderboard() {
   const [characters, setCharacters] = useState<any[]>([]);
-  const [sortBy, setSortBy] = useState("total_power");
+  const [sortBy, setSortBy] = useState("power");
   const [alignment, setAlignment] = useState("all");
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function Leaderboard() {
       
       <label>Sort By: </label>
       <select onChange={(e) => setSortBy(e.target.value)}>
-        <option value="total_power">Overall Power</option>
+        <option value="power">Overall Power</option>
         <option value="strength">Strength</option>
         <option value="speed">Speed</option>
         <option value="intelligence">Intelligence</option>

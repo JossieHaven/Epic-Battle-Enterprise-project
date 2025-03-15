@@ -6,7 +6,7 @@ interface ILeaderboard {
     strength: number;
     speed: number;
     intelligence: number;
-    total_power: number;
+    power: number;
     favorites: number;
 }
 
@@ -16,7 +16,7 @@ const LeaderboardSchema = new mongoose.Schema<ILeaderboard>({
     strength: { type: Number, required: true },
     speed: { type: Number, required: true },
     intelligence: { type: Number, required: true },
-    total_power: { type: Number, default: function() { return this.strength + this.speed + this.intelligence; } },
+    power: { type: Number, default: function() { return this.strength + this.speed + this.intelligence; } },
     favorites: { type: Number, default: 0 }
 });
 
