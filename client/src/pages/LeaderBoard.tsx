@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchLeaderboard } from "../services/api.tsx";
-import "../styles/Leaderboard.css";
+// import "../styles/Leaderboard.css";
 
 interface Character {
   id: number;

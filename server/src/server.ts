@@ -7,7 +7,7 @@ import { ApolloServer } from '@apollo/server';
 import { expressMiddleware } from '@apollo/server/express4';
 import { typeDefs, resolvers } from './schemas/index.js';
 import { authenticateToken } from './utils/auth.js';
-import leaderboardRoutes from "./routes/leaderboardRoutes";
+// import leaderboardRoutes from "./routes/leaderboardRoutes";
 import connectDB from './config/database.js';
 
 const server = new ApolloServer({
@@ -52,7 +52,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-app.use("/api/leaderboard", leaderboardRoutes);
+// app.use("/api/leaderboard", leaderboardRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
