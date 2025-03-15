@@ -8,6 +8,8 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { Outlet } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Leaderboard from "./pages/LeaderBoard";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -36,14 +38,20 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <div className="flex-column justify-flex-start min-100-vh">
-        <NavigationBar/>
-        <div className="container">
-          <Outlet />
+      <Router>
+        <div className="flex-column justify-flex-start min-100-vh">
+          <NavigationBar />
+          <div className="container">
+            <Routes>
+              <Route path="/leaderboard" element={<Leaderboard />} />
+              <Route path="*" element={<Outlet />} />
+            </Routes>
+          </div>
         </div>
-      </div>
+      </Router>
     </ApolloProvider>
   );
 }
+
 
 export default App;
