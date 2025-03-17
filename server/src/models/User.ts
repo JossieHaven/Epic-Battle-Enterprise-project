@@ -1,6 +1,6 @@
 import { Schema, model, type Document } from 'mongoose';
 import bcrypt from 'bcrypt';
-import charactersSchema, { CharacterDocument } from './charactersSchema';
+import charactersSchema, { CharacterDocument } from './charactersSchema.js';
 
 // import schema from Book.js
 
