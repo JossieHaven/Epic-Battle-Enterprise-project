@@ -12,13 +12,22 @@ const typeDefs = gql`
   type Character {
     characterId: String!
     name: String!
-    powerstats: PowerstatsInput
+    powerstats: PowerStats
     publisher: String!
     allignment: String!
     gender: String!
     race: String
     description: String!
     image: String
+  }
+
+  type PowerStats {
+    intelligence: Int!,
+    strength: Int!,
+    speed: Int!,
+    durability: Int!,
+    power: Int!,
+    combat: Int!
   }
 
   input CharacterInput {
@@ -35,12 +44,12 @@ const typeDefs = gql`
     password: String!
   }
   input PowerstatsInput {
-  intelligence: number!,
-    strength: number!,
-    speed: number!,
-    durability: number!,
-    power: number!,
-    combat: number!
+  intelligence: Int!,
+    strength: Int!,
+    speed: Int!,
+    durability: Int!,
+    power: Int!,
+    combat: Int!
 }
   type Auth {
     token: ID!

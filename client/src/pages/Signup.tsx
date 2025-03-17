@@ -3,10 +3,15 @@ import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import AuthService from "../utils/auth";
 import { useNavigate } from "react-router-dom";
+import { Form, Button, Alert } from 'react-bootstrap';
+
 
 const Signup = () => {
   const navigate = useNavigate();
-
+const [validated] = useState(false);
+  // set state for alert
+  const [showAlert, setShowAlert] = useState(false);
+  
   // State to store user input
   const [formData, setFormData] = useState({
     username: "",
@@ -28,7 +33,7 @@ const Signup = () => {
     try {
       const { data } = await addUser({
         variables: {
-          input: {
+          userData: {
             username: formData.username,
             email: formData.email,
             password: formData.password,
@@ -46,39 +51,61 @@ const Signup = () => {
   };
 
   return (
-    <main>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={formData.username}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-          minLength={6}
-        />
-        <button type="submit">Sign Up</button>
-      </form>
-      {error && <p>Error signing up. Please try again.</p>}
-    </main>
-  );
+      <>
+        {/* This is needed for the validation functionality above */}
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
+          {/* show alert if server response is bad */}
+          <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
+            Something went wrong with your signup!
+          </Alert>
+  
+          <Form.Group className='mb-3'>
+            <Form.Label htmlFor='username'>Username</Form.Label>
+            <Form.Control
+              type='text'
+              placeholder='Your username'
+              name='username'
+              onChange={handleChange}
+              value={formData.username || ''}
+              required
+            />
+            <Form.Control.Feedback type='invalid'>Username is required!</Form.Control.Feedback>
+          </Form.Group>
+  
+          <Form.Group className='mb-3'>
+            <Form.Label htmlFor='email'>Email</Form.Label>
+            <Form.Control
+              type='email'
+              placeholder='Your email address'
+              name='email'
+              onChange={handleChange}
+              value={formData.email || ''}
+              required
+            />
+            <Form.Control.Feedback type='invalid'>Email is required!</Form.Control.Feedback>
+          </Form.Group>
+  
+          <Form.Group className='mb-3'>
+            <Form.Label htmlFor='password'>Password</Form.Label>
+            <Form.Control
+              type='password'
+              placeholder='Your password'
+              name='password'
+              onChange={handleChange}
+              value={formData.password || ''}
+              required
+            />
+            <Form.Control.Feedback type='invalid'>Password is required!</Form.Control.Feedback>
+          </Form.Group>
+          <Button
+            disabled={!(formData.username && formData.email && formData.password)}
+            type='submit'
+            variant='success'>
+            Submit
+          </Button>
+        </Form>
+      </>
+    );
 };
 
 export default Signup;
