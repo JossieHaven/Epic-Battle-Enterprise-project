@@ -11,7 +11,7 @@ const Signup = () => {
 const [validated] = useState(false);
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
-  
+
   // State to store user input
   const [formData, setFormData] = useState({
     username: "",
@@ -21,6 +21,7 @@ const [validated] = useState(false);
 
   // Mutation for signing up
   const [addUser, { error }] = useMutation(ADD_USER);
+  console.error(error, "this is a test, not a real error")
 
   // Handle input change
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
