@@ -35,12 +35,12 @@ const typeDefs = gql`
     password: String!
   }
   input PowerstatsInput {
-  intelligence: Integer!,
-    strength: Integer!,
-    speed: Integer!,
-    durability: Integer!,
-    power: Integer!,
-    combat: Integer!
+  intelligence: number!,
+    strength: number!,
+    speed: number!,
+    durability: number!,
+    power: number!,
+    combat: number!
 }
   type Auth {
     token: ID!
