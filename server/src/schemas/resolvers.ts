@@ -24,14 +24,15 @@ interface CharacterArgs {
     characterId: string;
     name: string;
     powerstats: {
-      intelligence: string,
-      strength: string,
-      speed: string,
-      durability: string,
-      power: string,
-      combat: string
+      intelligence: number,
+      strength: number,
+      speed: number,
+      durability: number,
+      power: number,
+      combat: number
     };
     publisher: string;
+    desription: string;
     allignment: string;
     gender: string;
     race: string;
