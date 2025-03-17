@@ -12,7 +12,7 @@ const typeDefs = gql`
   type Character {
     characterId: String!
     name: String!
-    powerstats: {String}
+    powerstats: PowerStats
     publisher: String!
     allignment: String!
     gender: String!
@@ -21,10 +21,19 @@ const typeDefs = gql`
     image: String
   }
 
+  type PowerStats {
+    intelligence: Int!,
+    strength: Int!,
+    speed: Int!,
+    durability: Int!,
+    power: Int!,
+    combat: Int!
+  }
+
   input CharacterInput {
     characterId: String!
     name: String!
-    powerstats: {String}
+    powerstats: PowerstatsInput
     description: String!
     image: String
   }
@@ -34,7 +43,14 @@ const typeDefs = gql`
     email: String!
     password: String!
   }
-
+  input PowerstatsInput {
+  intelligence: Int!,
+    strength: Int!,
+    speed: Int!,
+    durability: Int!,
+    power: Int!,
+    combat: Int!
+}
   type Auth {
     token: ID!
     user: User
@@ -49,7 +65,7 @@ const typeDefs = gql`
   type Mutation {
     addUser(userData: UserInput!): Auth
     login(email: String!, password: String!): Auth
-    saveCharacter(characterId: String!, name: String!, powerstats: {String}, description: String!, image: String): User
+    saveCharacter(characterId: String!, name: String!, powerstats: PowerstatsInput!, description: String!, image: String): User
     removeCharacter(characterId: String!): User
   }
 `;

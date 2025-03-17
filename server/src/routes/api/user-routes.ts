@@ -18,6 +18,6 @@ router.route('/login').post(login);
 
 router.route('/me').get(authenticateToken, getSingleUser);
 
-router.route('/books/:bookId').delete(authenticateToken, deleteCharacter);
+router.route('/characters/:characterId').delete(authenticateToken, deleteCharacter);
 
 export default router;

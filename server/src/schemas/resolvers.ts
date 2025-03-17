@@ -24,14 +24,15 @@ interface CharacterArgs {
     characterId: string;
     name: string;
     powerstats: {
-      intelligence: string,
-      strength: string,
-      speed: string,
-      durability: string,
-      power: string,
-      combat: string
+      intelligence: number,
+      strength: number,
+      speed: number,
+      durability: number,
+      power: number,
+      combat: number
     };
     publisher: string;
+    desription: string;
     allignment: string;
     gender: string;
     race: string;
@@ -66,7 +67,7 @@ const resolvers = {
   Mutation: {
     addUser: async (_parent: any, { userData }: AddUserArgs) => {
       // Create a new user with the provided username, email, and password
-      const user = await User.create({ userData });
+      const user = await User.create({ ...userData });
       const token = signToken(user.username, user.email, user.id);
       return { token, user };
     

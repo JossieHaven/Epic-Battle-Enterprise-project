@@ -13,14 +13,55 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation Mutation($input: UserInput!) {
-  addUser(input: $input) {
-    user {
-      username
-      _id
+  mutation addUser($userData: UserInput!) {
+    addUser(userData: $userData) {
+      token
+      user {
+        id
+        username
+        email
+      }
     }
-    token
+  }
+`;
+
+export const SAVE_CHARACTER = gql`
+
+  mutation SaveCharacter($characterId: String!, $name: String!, $description: String!, $image: String, $powerstats: PowerstatsInput) {
+  saveCharacter(characterId: $characterId, name: $name, description: $description, image: $image, powerstats: PowerstatsInput) {
+    CharacterCount
+    email
+    id
+    username
+    savedCharacters {
+      publisher
+      name
+      characterId
+      description
+      image
+    }
+    powerstats {
+      intelligence
+      strength
+      speed
+      durability
+      power
+      combat
+    }
   }
 }
 `;
 
+export const REMOVE_CHARACTER = gql`
+  mutation removeCharacter($characterId: String!) {
+    removeCharacter(characterId: $characterId) {
+      id
+      username
+      savedCharacters {
+        characterId
+        publisher
+        name
+      }
+    }
+  }
+`;

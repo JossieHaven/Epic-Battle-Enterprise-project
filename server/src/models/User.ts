@@ -1,9 +1,9 @@
 import { Schema, model, type Document } from 'mongoose';
 import bcrypt from 'bcrypt';
+import charactersSchema, { CharacterDocument } from './charactersSchema.js';
 
 // import schema from Book.js
-import characterSchema from './characters.js';
-import type { CharacterDocument } from './characters.js';
+
 
 export interface UserDocument extends Document {
   id: string;
@@ -33,7 +33,7 @@ const userSchema = new Schema<UserDocument>(
       required: true,
     },
     // set savedBooks to be an array of data that adheres to the bookSchema
-    savedCharacters: [characterSchema],
+    savedCharacters: [charactersSchema],
   },
   // set this to use virtual below
   {
