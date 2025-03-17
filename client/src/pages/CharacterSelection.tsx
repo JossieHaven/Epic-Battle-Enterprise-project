@@ -12,7 +12,7 @@ interface Character {
   power: number;
   defense: number;
   ability: string;
-  type: "hero" | "villain";
+  allignment: "hero" | "villain";
 }
 
 const CharacterSelection: React.FC = () => {
@@ -21,18 +21,18 @@ const CharacterSelection: React.FC = () => {
   const [selectedVillain, setSelectedVillain] = useState<Character | null>(null);
 
   // filter characters based on type
-  const heroes = charactersData.filter((char) => char.type === "hero");
-  const villains = charactersData.filter((char) => char.type === "villain");
+  const heroes = charactersData.filter((char:Character) => char.allignment === "hero");
+  const villains = charactersData.filter((char:Character) => char.allignment === "villain");
 
   // handle hero selection
   const handleHeroChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const hero = heroes.find((h) => h.id === event.target.value) || null;
+    const hero = heroes.find((h:Character) => h.id === event.target.value) || null;
     setSelectedHero(hero);
   };
 
   // handle villain selection
   const handleVillainChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const villain = villains.find((v) => v.id === event.target.value) || null;
+    const villain = villains.find((v:Character) => v.id === event.target.value) || null;
     setSelectedVillain(villain);
   };
 
@@ -56,7 +56,7 @@ const CharacterSelection: React.FC = () => {
             onChange={handleHeroChange}
           >
             <option value="">Select Hero</option>
-            {heroes.map((hero) => (
+            {heroes.map((hero:Character) => (
               <option key={hero.id} value={hero.id}>
                 {hero.name}
               </option>
@@ -71,7 +71,7 @@ const CharacterSelection: React.FC = () => {
             onChange={handleVillainChange}
           >
             <option value="">Select Villain</option>
-            {villains.map((villain) => (
+            {villains.map((villain:Character) => (
               <option key={villain.id} value={villain.id}>
                 {villain.name}
               </option>
