@@ -9,7 +9,7 @@ function CharacterStats() {
     const fetchCharacter = async () => {
         try {
             setError("");
-            const response = await axios.get(`http://localhost:5000/api/characters/${name}`);
+            const response = await axios.get(`http://localhost:5001/api/characters/${name}`);
             setCharacter(response.data);
         } catch (err) {
             setError("Character not found");
