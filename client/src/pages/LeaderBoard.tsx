@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import { useEffect, useState } from "react";
-import { fetchLeaderboard } from "../services/api.tsx";
-=======
 // import { useEffect, useState } from "react";
 // import { fetchLeaderboard } from "../services/api.tsx";
->>>>>>> c04949e1ad05ef7475117b1208e5075387fb7069
 // import "../styles/Leaderboard.css";
 
 // interface Character {
