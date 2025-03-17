@@ -1,9 +1,9 @@
 import { Schema, model, type Document } from 'mongoose';
 import bcrypt from 'bcrypt';
+import characterSchema, { CharacterDocument } from './charactersSchema';
 
 // import schema from Book.js
-import characterSchema from './characters.js';
-import type { CharacterDocument } from './characters.js';
+
 
 export interface UserDocument extends Document {
   id: string;

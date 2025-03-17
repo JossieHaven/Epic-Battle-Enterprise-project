@@ -1,23 +1,11 @@
 import express, { Request, Response } from 'express';
 import path from 'node:path';
-<<<<<<< HEAD
 import db from './config/connection.js';
 import { ApolloServer } from '@apollo/server'; // Apollo Server
 import { expressMiddleware } from '@apollo/server/express4'; // Express 4 middleware
 import { typeDefs, resolvers } from './schemas/index.js';
-import { authenticateToken } from './services/auth.js';
-
-=======
-import type { Request, Response } from 'express';
-import dotenv from 'dotenv';
-import db from './config/connection.js'
-import { ApolloServer } from '@apollo/server';
-import { expressMiddleware } from '@apollo/server/express4';
-import { typeDefs, resolvers } from './schemas/index.js';
 import { authenticateToken } from './utils/auth.js';
-import leaderboardRoutes from "./routes/leaderboardRoutes";
-import connectDB from './config/database.js';
->>>>>>> 7bfc7df037617677c7118a36564f06b1d7268991
+// import leaderboardRoutes from "./routes/leaderboardRoutes";
 
 const server = new ApolloServer({
   typeDefs,
@@ -66,15 +54,15 @@ const startApolloServer = async () => {
 };
 
 
-dotenv.config();
-connectDB();
+// dotenv.config();
+// connectDB();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
-app.use("/api/leaderboard", leaderboardRoutes);
+// app.use("/api/leaderboard", leaderboardRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
