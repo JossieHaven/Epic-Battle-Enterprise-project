@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCharacter } from "../context/CharacterContext";
 import CharacterCard from "../components/CharacterCard";
-import charactersData from "../../../server/src/seeds/userData.json";
+// import charactersData from "../../../server/src/seeds/userData.json";
 
 // Character type definition
 interface Character {
