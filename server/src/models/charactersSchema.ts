@@ -1,15 +1,15 @@
-import { Schema, type Document } from 'mongoose';
+import { Schema, type Document } from "mongoose";
 
 export interface CharacterDocument extends Document {
   characterId: string;
   name: string;
   powerstats: {
-    intelligence: string,
-    strength: string,
-    speed: string,
-    durability: string,
-    power: string,
-    combat: string
+    intelligence: string;
+    strength: string;
+    speed: string;
+    durability: string;
+    power: string;
+    combat: string;
   };
   publisher: string;
   allignment: string;
