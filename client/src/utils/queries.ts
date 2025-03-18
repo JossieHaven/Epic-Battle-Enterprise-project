@@ -12,7 +12,13 @@ export const QUERY_ME = gql`
         publisher
         description
         image
-        powerstats
+        alignment
+        intelligence
+        strength
+        speed
+        durability
+        power
+        combat
       }
     }
   }

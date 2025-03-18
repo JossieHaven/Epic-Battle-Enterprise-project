@@ -23,19 +23,15 @@ interface CharacterArgs {
   characterData: {
     characterId: string;
     name: string;
-    powerstats: {
-      intelligence: number;
-      strength: number;
-      speed: number;
-      durability: number;
-      power: number;
-      combat: number;
-    };
+    intelligence: string;
+    strength: string;
+    speed: string;
+    durability: string;
+    power: string;
+    combat: string;
     publisher: string;
     desription: string;
     alignment: string;
-    gender: string;
-    race: string;
     image: string;
   };
 }
@@ -66,7 +62,7 @@ const resolvers = {
       throw new AuthenticationError("Could not authenticate user.");
     },
 
-    searchCharacter : async (_: any, { name }: { name: string }) => {
+    searchCharacter: async (_: any, { name }: { name: string }) => {
       try {
         const API_KEY = process.env.SUPER_HERO_API_KEY;
         const response = await fetch(
@@ -86,13 +82,13 @@ const resolvers = {
           fullName: character.biography.fullName,
           publisher: character.biography.publisher,
           alignment: character.biography.alignment,
-          intelligence: character.powerstats.intelligence || '',
-          strength: character.powerstats.strength || '',
-          speed: character.powerstats.speed || '',
-          durability: character.powerstats.durability || '',
-          power: character.powerstats.powerstats || '',
-          combat: character.powerstats.combat || '',
-         image: character.image.url,
+          intelligence: character.powerstats.intelligence || "",
+          strength: character.powerstats.strength || "",
+          speed: character.powerstats.speed || "",
+          durability: character.powerstats.durability || "",
+          power: character.powerstats.powerstats || "",
+          combat: character.powerstats.combat || "",
+          image: character.image.url,
         }));
       } catch (error) {
         throw new Error(`Failed to fetch character: ${error}`);

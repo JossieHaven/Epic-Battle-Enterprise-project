@@ -11,10 +11,10 @@ const BattleArena = () => {
       <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white">
         <h1 className="text-3xl font-bold mb-4">No characters selected!</h1>
         <button
-          onClick={() => navigate("/character-selection")}
+          onClick={() => navigate("/search")}
           className="px-6 py-3 bg-yellow-500 text-black rounded-lg font-bold text-xl"
         >
-          Go Back to Selection
+          Play Again
         </button>
       </div>
     );
