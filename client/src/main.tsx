@@ -8,7 +8,7 @@ import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import SearchCharacters from "./pages/SearchCharacters";
 import BattleArena from "./pages/BattleArena"; 
-import Profile from "./pages/Profile";
+import Profile from "./pages/UserProfile"; // Ensure the Profile component exists in the ./pages directory
 import ErrorPage from "./pages/Error";
 
 const router = createBrowserRouter([
