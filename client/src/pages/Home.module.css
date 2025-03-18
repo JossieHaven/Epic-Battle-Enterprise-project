@@ -1,84 +1,184 @@
-/* General Layout */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+
 .main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: #1f2937; /* Tailwind's bg-gray-900 */
-    color: white;
-    position: relative;
-  }
-  
-  /* Image Container */
-  .imageContainer {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    padding: 2.5rem;
-    margin-top: 4rem; /* Adjust to prevent overlapping with navbar */
-  }
-  
-  /* Banner Styling */
-  .banner {
-    width: 48%; /* Slightly less than 50% to add spacing */
-    position: relative;
-    border-radius: 0.5rem; /* Tailwind's rounded-lg */
+    justify-content: space-evenly; /* Space elements evenly */
+    height: 100vh;
+    width: 100vw;
     overflow: hidden;
-    height: 24rem; /* Equivalent to h-96 */
+    background: url('https://i.pinimg.com/736x/43/0d/8f/430d8f501e1410552c7567f740946f50.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    font-family: 'Bangers', cursive;
+    padding: 1vh 2vw;
+}
+
+/* Comicbook Superhero Themed Logo */
+.logo {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1vw;
+    font-size: clamp(2rem, 3.5vw, 4rem); /* Keeps size proportional */
+    text-transform: uppercase;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 1vh 2vw;
+    border-radius: 10px;
+    max-width: 80%;
+    text-align: center;
+}
+
+/* Logo Text Styling */
+.logo span {
+    display: inline-block;
+    color: #ffcc00;
+    text-shadow: 
+        3px 3px 10px rgba(255, 204, 0, 0.8), 
+        0 0 20px rgba(255, 204, 0, 0.5);
+    animation: flicker-glow-pulse 2s infinite alternate;
+}
+
+/* 🔹 Hero, Logo, Villain Container */
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Makes it fit dynamically */
+    width: 100%;
+    gap: 1vw;
+    max-height: 60vh;
+}
+
+/* Banners Adjust with Viewport */
+.banner {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(30vw, 250px); /* Prevents banners from getting too large */
+    height: min(50vh, 300px);
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .image {
+    background-color: black;
+}
+
+/* Image inside Banner */
+.image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.8; /* Tailwind's opacity-80 */
-  }
-  
-  /* Overlay */
-  .overlay {
+    opacity: 0.9;
+}
+
+/* Overlay for Text */
+.overlay {
     position: absolute;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Tailwind's bg-black bg-opacity-50 */
-  }
-  
-  /* Text */
-  .text {
-    font-size: 2rem; /* Tailwind's text-4xl */
+}
+
+/* Text Styling */
+.text {
+    font-size: clamp(1rem, 2vw, 2.5rem); /* Adjusts to viewport */
     font-weight: bold;
     color: white;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
     position: relative;
     z-index: 10;
-  }
-  
-  /* Page Title */
-  .pageTitle {
-    font-size: 2.5rem; /* Tailwind's text-4xl */
-    font-weight: bold;
-    margin-top: 1.5rem; /* Tailwind's mt-6 */
-  }
-  
-  /* Start Battle Button */
-  .button {
-    margin-top: 1.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #facc15; /* Tailwind's bg-yellow-500 */
-    color: black;
-    border-radius: 0.5rem;
-    font-weight: bold;
-    font-size: 1.25rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  .button:hover {
-    background-color: #eab308; /* Darker yellow on hover */
-  }
-  
-  
-  
+}
+
+/* 🔹 Battle Button Container */
+.battleContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(20vw, 200px);
+    height: min(10vh, 60px);
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* 🔹 Responsive Design Adjustments */
+@media (max-width: 1024px) {
+    .imageContainer {
+        flex-direction: column;
+        align-items: center;
+        max-height: 80vh;
+    }
+
+    .banner {
+        width: 60vw;
+        height: 30vh;
+    }
+
+    .logo {
+        font-size: 5vw;
+        width: 90%;
+    }
+
+    .battleContainer {
+        position: relative;
+        left: auto;
+        transform: none;
+        height: auto;
+        margin-top: 2vh;
+    }
+}
+
+@media (max-width: 600px) {
+    .imageContainer {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .banner {
+        width: 90%;
+        height: 25vh;
+    }
+
+    .logo {
+        font-size: 6vw;
+        text-align: center;
+    }
+
+    .text {
+        font-size: 3vw;
+    }
+
+    .battleContainer {
+        position: relative;
+        margin-top: 2vh;
+    }
+}
+
+/* 🔹 Flickering, Glowing, Pulsating Effect */
+@keyframes flicker-glow-pulse {
+    0% {
+        opacity: 1;
+        text-shadow: 
+            3px 3px 10px rgba(255, 204, 0, 0.5), 
+            0 0 15px rgba(255, 204, 0, 0.5);
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        text-shadow: 
+            5px 5px 20px rgba(255, 204, 0, 1), 
+            0 0 30px rgba(255, 204, 0, 1);
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        text-shadow: 
+            3px 3px 10px rgba(255, 204, 0, 0.5), 
+            0 0 15px rgba(255, 204, 0, 0.5);
+        transform: scale(1);
+    }
+}
