@@ -31,14 +31,30 @@ export const SAVE_CHARACTER = gql`
     $name: String!
     $description: String!
     $image: String
-    $powerstats: PowerstatsInput
+    $publisher: String
+    $alignment: String
+    $intelligence: String
+    $strength: String
+    $speed: String
+    $durability: String
+    $power: String
+    $combat: String
+
   ) {
     saveCharacter(
       characterId: $characterId
       name: $name
       description: $description
       image: $image
-      powerstats: PowerstatsInput
+      publisher: $publisher
+      alignment: $alignment
+      intelligence: $intelligence
+      strength: $strength
+      speed: $speed
+      durability: $durability
+      power: $power
+      combat: $combat
+
     ) {
       CharacterCount
       email
@@ -50,8 +66,7 @@ export const SAVE_CHARACTER = gql`
         characterId
         description
         image
-      }
-      powerstats {
+        alignment
         intelligence
         strength
         speed

@@ -67,7 +67,13 @@ const SearchCharacters = () => {
         name: character.name,
         publisher: character.publisher || "No publisher to display",
         image: character.image || "",
-        alignment: character.alignment,
+        alignment: character.alignment || "",
+        intelligence: character.intelligence || "",
+        strength: character.strength || "",
+        speed: character.speed || "",
+        durability: character.durability || "",
+        power: character.power || "",
+        combat: character.combat || ""
       }));
       setSearchedCharacters(characterData);
     }
@@ -104,6 +110,9 @@ const SearchCharacters = () => {
       console.error(err);
     }
   };
+
+
+
 
   return (
     <>
@@ -151,8 +160,14 @@ const SearchCharacters = () => {
                 )}
                 <Card.Body>
                   <Card.Title>{character.name}</Card.Title>
-                  <p className="small">Publisher: {character.publisher}</p>
-                  <p className="small">Alignment: {character.alignment}</p>
+                    <p className="small">Publisher: {character.publisher}</p>
+                    <p className="small">Alignment: {character.alignment}</p>
+                    <p className="small">Intelligence: {character.intelligence ?? "N/A"}</p>
+                    <p className="small">Strength: {character.strength ?? "N/A"}</p>
+                    <p className="small">Speed: {character.speed ?? "N/A"}</p>
+                    <p className="small">Durability: {character.durability ?? "N/A"}</p>
+                    <p className="small">Power: {character.power ?? "N/A"}</p>
+                    <p className="small">Combat: {character.combat ?? "N/A"}</p>
                   {Auth.loggedIn() && (
                     <>
                       <Button

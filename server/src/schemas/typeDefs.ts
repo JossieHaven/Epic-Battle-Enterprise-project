@@ -29,7 +29,12 @@ const typeDefs = gql`
   input CharacterInput {
     characterId: String!
     name: String!
-    powerstats: PowerstatsInput
+    intelligence: String
+    strength: String
+    speed: String
+    durability: String
+    power: String
+    combat: String
     description: String!
     image: String
   }
@@ -39,14 +44,14 @@ const typeDefs = gql`
     email: String!
     password: String!
   }
-  input PowerstatsInput {
-    intelligence: Int!
-    strength: Int!
-    speed: Int!
-    durability: Int!
-    power: Int!
-    combat: Int!
-  }
+  # input PowerstatsInput {
+  #   intelligence: Int!
+  #   strength: Int!
+  #   speed: Int!
+  #   durability: Int!
+  #   power: Int!
+  #   combat: Int!
+  # }
   type Auth {
     token: ID!
     user: User
@@ -68,7 +73,12 @@ const typeDefs = gql`
       publisher: String
       alignment: String
       image: String
-      powerstats: PowerstatsInput
+      intelligence: String
+      strength: String
+      speed: String
+      durability: String
+      power: String
+      combat: String
     ): Character
     removeCharacter(characterId: String!): User
   }
