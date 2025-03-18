@@ -33,6 +33,8 @@ const SearchCharacters = () => {
 
   const [searchCharacter, { loading, error, data }] = useLazyQuery(SEARCH_CHARACTER);
   const [saveCharacter] = useMutation(SAVE_CHARACTER);
+  const [hero, setHero] = useState('')
+  const [vilain, setVilain] = useState('')
 
   // Save character IDs to local storage on component unmount
   useEffect(() => {
@@ -87,6 +89,50 @@ const SearchCharacters = () => {
     }
   };
 
+  const handleSaveCharacterHero = async (characterId: string) => {
+    const characterToSave: Character = searchedCharacters.find(
+      (character) => character.characterId === characterId
+    )!;
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    if (!token) return false;
+
+    try {
+      const { data } = await saveCharacter({
+        variables: { ...characterToSave },
+      });
+
+      if (data.saveCharacter) {
+        setSavedCharacterIds([...savedCharacterIds, characterToSave.characterId]);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+
+  const handleSaveCharacterVillain = async (characterId: string) => {
+    const characterToSave: Character = searchedCharacters.find(
+      (character) => character.characterId === characterId
+    )!;
+
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    if (!token) return false;
+
+    try {
+      const { data } = await saveCharacter({
+        variables: { ...characterToSave },
+      });
+
+      if (data.saveCharacter) {
+        setSavedCharacterIds([...savedCharacterIds, characterToSave.characterId]);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+
   return (
     <>
       <div className="text-light bg-dark p-5">
@@ -136,15 +182,28 @@ const SearchCharacters = () => {
                   <p className="small">Publisher: {character.publisher}</p>
                   <p className="small">Alignment: {character.alignment}</p>
                   {Auth.loggedIn() && (
+                    <>
                     <Button
                       disabled={savedCharacterIds.includes(character.characterId)}
                       className="btn-block btn-info"
-                      onClick={() => handleSaveCharacter(character.characterId)}
+                      onClick={() => handleSaveCharacterHero(character.characterId)}
                     >
                       {savedCharacterIds.includes(character.characterId)
                         ? "This character has already been saved!"
-                        : "Save this Character!"}
+                        : "Hero"}
                     </Button>
+                    <Button
+                    disabled={savedCharacterIds.includes(character.characterId)}
+                    className="btn-block btn-info"
+                    onClick={() => handleSaveCharacterVillain(character.characterId)}
+                  >
+                    {savedCharacterIds.includes(character.characterId)
+                      ? "This character has already been saved!"
+                      : "Villain"}
+                  </Button>
+
+                  </>
+
                   )}
                 </Card.Body>
               </Card>
