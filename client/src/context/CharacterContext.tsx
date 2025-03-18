@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, ReactNode } from "react";
 
-// structure of a Character
+// Character structure
 interface Character {
   id: string;
   name: string;
@@ -10,11 +10,14 @@ interface Character {
   ability: string;
 }
 
+// Context structure
 interface CharacterContextType {
   selectedHero: Character | null;
   selectedVillain: Character | null;
   selectCharacters: (hero: Character, villain: Character) => void;
 }
+
+// Create the CharacterContext
 const CharacterContext = createContext<CharacterContextType | undefined>(undefined);
 
 export const CharacterProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -33,6 +36,7 @@ export const CharacterProvider: React.FC<{ children: ReactNode }> = ({ children 
   );
 };
 
+// Hook to use the CharacterContext
 export const useCharacter = (): CharacterContextType => {
   const context = useContext(CharacterContext);
   if (!context) {
