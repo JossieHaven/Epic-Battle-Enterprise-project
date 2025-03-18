@@ -1,21 +1,40 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import heroBanner from "../assets/hero-banner.jpg";
 import villainBanner from "../assets/villain-banner.jpg";
 import styles from "./Home.module.css";
 
+// authentication check to redirect accordingly
+const isAuthenticated = (): boolean => {
+  const token = localStorage.getItem("id_token");
+  return Boolean(token && token !== "null" && token !== "");
+};
 
 const Home = () => {
+  const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(isAuthenticated());
+  const [buttonText, setButtonText] = useState<string>(isAuthenticated() ? "BATTLE" : "ENTER");
+
+  useEffect(() => {
+    const loggedIn = isAuthenticated();
+    setIsLoggedIn(loggedIn);
+    setButtonText(loggedIn ? "BATTLE" : "ENTER");
+  }, []);
+
+  const handleBattleClick = () => {
+    navigate(isLoggedIn ? "/search" : "/login"); // one-liner nav logic {testing new waters and it worked :') ...}
+  };
+
   return (
     <main className={styles.main}>
-      {/* Superhero Themed Logo (Now Below Navbar) */}
+      {/* Superhero Themed Logo */}
       <div className={styles.logo}>
         <span className={styles.epic}>EPIC</span>
         <span className={styles.battle}>BATTLE</span>
         <span className={styles.enterprise}>ENTERPRISE</span>
       </div>
 
-      {/* Flex container for images */}
       <div className={styles.imageContainer}>
         {/* Hero Banner */}
         <div className={styles.banner}>
@@ -35,21 +54,19 @@ const Home = () => {
       </div>
 
       {/* Start Battle Button */}
-      <Link to="/search">
-        <StyledWrapper>
-          <button>
-            B A T T L E
-            <div id="clip">
-              <div id="leftTop" className="corner" />
-              <div id="rightBottom" className="corner" />
-              <div id="rightTop" className="corner" />
-              <div id="leftBottom" className="corner" />
-            </div>
-            <span id="rightArrow" className="arrow" />
-            <span id="leftArrow" className="arrow" />
-          </button>
-        </StyledWrapper>
-      </Link>
+      <StyledWrapper>
+        <button onClick={handleBattleClick}>
+          {buttonText} {/* Dynamically changes between "Enter" and "Battle" */}
+          <div id="clip">
+            <div id="leftTop" className="corner" />
+            <div id="rightBottom" className="corner" />
+            <div id="rightTop" className="corner" />
+            <div id="leftBottom" className="corner" />
+          </div>
+          <span id="rightArrow" className="arrow" />
+          <span id="leftArrow" className="arrow" />
+        </button>
+      </StyledWrapper>
     </main>
   );
 };
