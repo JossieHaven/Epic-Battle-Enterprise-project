@@ -4,7 +4,10 @@ import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
 import { useLazyQuery, useMutation, gql } from "@apollo/client";
 import Auth from "../utils/auth";
 import { SAVE_CHARACTER } from "../utils/mutations.js";
-import { saveCharacterIds, getSavedCharacterIds } from "../utils/localStorage.js";
+import {
+  saveCharacterIds,
+  getSavedCharacterIds,
+} from "../utils/localStorage.js";
 import type { Character } from "../models/Character.js";
 
 const SEARCH_CHARACTER = gql`
@@ -12,16 +15,16 @@ const SEARCH_CHARACTER = gql`
     searchCharacter(name: $name) {
       characterId
       name
-        fullName
-        publisher
-        alignment
-        intelligence
-        strength
-        speed
-        durability
-        combat
-        power
-      image 
+      fullName
+      publisher
+      alignment
+      intelligence
+      strength
+      speed
+      durability
+      combat
+      power
+      image
     }
   }
 `;
@@ -29,12 +32,15 @@ const SEARCH_CHARACTER = gql`
 const SearchCharacters = () => {
   const [searchedCharacters, setSearchedCharacters] = useState<Character[]>([]);
   const [searchInput, setSearchInput] = useState("");
-  const [savedCharacterIds, setSavedCharacterIds] = useState(getSavedCharacterIds());
+  const [savedCharacterIds, setSavedCharacterIds] = useState(
+    getSavedCharacterIds()
+  );
 
-  const [searchCharacter, { loading, error, data }] = useLazyQuery(SEARCH_CHARACTER);
+  const [searchCharacter, { loading, error, data }] =
+    useLazyQuery(SEARCH_CHARACTER);
   const [saveCharacter] = useMutation(SAVE_CHARACTER);
-  const [hero, setHero] = useState('')
-  const [vilain, setVilain] = useState('')
+  // const [hero, setHero] = useState("");
+  // const [vilain, setVilain] = useState("");
 
   // Save character IDs to local storage on component unmount
   useEffect(() => {
@@ -57,7 +63,7 @@ const SearchCharacters = () => {
   useEffect(() => {
     if (data && data.searchCharacter) {
       const characterData = data.searchCharacter.map((character: any) => ({
-        characterId: character.id,
+        characterId: character.characterId,
         name: character.name,
         publisher: character.publisher || "No publisher to display",
         image: character.image || "",
@@ -68,13 +74,20 @@ const SearchCharacters = () => {
   }, [data]);
 
   // Save character to database
-  const handleSaveCharacter = async (characterId: string) => {
+  const handleSaveCharacter = async (
+    characterId: string,
+    alignment: "hero" | "villain"
+  ) => {
     const characterToSave: Character = searchedCharacters.find(
       (character) => character.characterId === characterId
     )!;
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) return false;
+    console.log(characterId);
+    console.log(alignment);
+
+    localStorage.setItem(alignment, JSON.stringify(characterId));
 
     try {
       const { data } = await saveCharacter({
@@ -82,16 +95,22 @@ const SearchCharacters = () => {
       });
 
       if (data.saveCharacter) {
-        setSavedCharacterIds([...savedCharacterIds, characterToSave.characterId]);
+        setSavedCharacterIds([
+          ...savedCharacterIds,
+          characterToSave.characterId,
+        ]);
       }
     } catch (err) {
       console.error(err);
     }
   };
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 389dd469138ddaf467fc482685006066ace5c84c
   return (
     <>
       <div className="text-light bg-dark p-5">
@@ -142,27 +161,33 @@ const SearchCharacters = () => {
                   <p className="small">Alignment: {character.alignment}</p>
                   {Auth.loggedIn() && (
                     <>
-                    <Button
-                      disabled={savedCharacterIds.includes(character.characterId)}
-                      className="btn-block btn-info"
-                      onClick={() => handleSaveCharacterHero(character.characterId)}
-                    >
-                      {savedCharacterIds.includes(character.characterId)
-                        ? "This character has already been saved!"
-                        : "Hero"}
-                    </Button>
-                    <Button
-                    disabled={savedCharacterIds.includes(character.characterId)}
-                    className="btn-block btn-info"
-                    onClick={() => handleSaveCharacterVillain(character.characterId)}
-                  >
-                    {savedCharacterIds.includes(character.characterId)
-                      ? "This character has already been saved!"
-                      : "Villain"}
-                  </Button>
-
-                  </>
-
+                      <Button
+                        disabled={savedCharacterIds.includes(
+                          character.characterId
+                        )}
+                        className="btn-block btn-info"
+                        onClick={() =>
+                          handleSaveCharacter(character.characterId, "hero")
+                        }
+                      >
+                        {savedCharacterIds.includes(character.characterId)
+                          ? "This character has already been saved!"
+                          : "Hero"}
+                      </Button>
+                      <Button
+                        disabled={savedCharacterIds.includes(
+                          character.characterId
+                        )}
+                        className="btn-block btn-info"
+                        onClick={() =>
+                          handleSaveCharacter(character.characterId, "villain")
+                        }
+                      >
+                        {savedCharacterIds.includes(character.characterId)
+                          ? "This character has already been saved!"
+                          : "Villain"}
+                      </Button>
+                    </>
                   )}
                 </Card.Body>
               </Card>

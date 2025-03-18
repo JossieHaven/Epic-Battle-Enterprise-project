@@ -3,15 +3,15 @@ import { useLocation, useNavigate } from "react-router-dom";
 const BattleArena = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  
+
   const { hero, villain } = location.state || {};
 
   if (!hero || !villain) {
     return (
       <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white">
         <h1 className="text-3xl font-bold mb-4">No characters selected!</h1>
-        <button 
-          onClick={() => navigate("/character-selection")} 
+        <button
+          onClick={() => navigate("/character-selection")}
           className="px-6 py-3 bg-yellow-500 text-black rounded-lg font-bold text-xl"
         >
           Go Back to Selection
@@ -28,7 +28,11 @@ const BattleArena = () => {
         {/* Hero Section */}
         <div className="text-center">
           <h2 className="text-2xl font-bold">{hero.name}</h2>
-          <img src={hero.image} alt={hero.name} className="w-40 h-40 object-cover rounded-lg border border-blue-500" />
+          <img
+            src={hero.image}
+            alt={hero.name}
+            className="w-40 h-40 object-cover rounded-lg border border-blue-500"
+          />
           <p className="mt-2">Power: {hero.power}</p>
           <p>Defense: {hero.defense}</p>
           <p>Ability: {hero.ability}</p>
@@ -40,15 +44,19 @@ const BattleArena = () => {
         {/* Villain Section */}
         <div className="text-center">
           <h2 className="text-2xl font-bold">{villain.name}</h2>
-          <img src={villain.image} alt={villain.name} className="w-40 h-40 object-cover rounded-lg border border-red-500" />
+          <img
+            src={villain.image}
+            alt={villain.name}
+            className="w-40 h-40 object-cover rounded-lg border border-red-500"
+          />
           <p className="mt-2">Power: {villain.power}</p>
           <p>Defense: {villain.defense}</p>
           <p>Ability: {villain.ability}</p>
         </div>
       </div>
 
-      <button 
-        onClick={() => navigate("/character-selection")}
+      <button
+        onClick={() => navigate("/search")}
         className="mt-6 px-6 py-3 bg-yellow-500 text-black rounded-lg font-bold text-xl"
       >
         Choose Again
