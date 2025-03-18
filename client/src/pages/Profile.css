@@ -1,0 +1,125 @@
+/* General Page Styling */
+.profile-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #1e1e2f;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Header */
+.profile-container h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #ffcc00;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Profile Info */
+.profile-info {
+    text-align: left;
+    background: #282841;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.profile-info p {
+    font-size: 1.1rem;
+    margin: 8px 0;
+    color: #d1d1e0;
+}
+
+/* Edit Mode Inputs */
+.edit-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.edit-profile label {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+.edit-profile input {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: #34344a;
+    color: #ffffff;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    background: #ffcc00;
+    color: #1e1e2f;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #ffd633;
+}
+
+/* Favorite Characters & Battle History */
+.profile-section {
+    margin-top: 25px;
+    padding: 15px;
+    background: #2a2a3d;
+    border-radius: 8px;
+}
+
+.profile-section h3 {
+    font-size: 1.5rem;
+    color: #ffcc00;
+    margin-bottom: 10px;
+}
+
+.profile-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.profile-section li {
+    padding: 10px;
+    background: #393954;
+    margin: 5px 0;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .profile-container {
+        width: 90%;
+        padding: 15px;
+    }
+
+    .profile-info p {
+        font-size: 1rem;
+    }
+
+    .profile-section h3 {
+        font-size: 1.3rem;
+    }
+}
