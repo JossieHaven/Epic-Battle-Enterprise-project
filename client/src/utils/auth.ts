@@ -1,7 +1,11 @@
 import { type JwtPayload, jwtDecode } from "jwt-decode";
+import { ReactNode } from "react";
 
 // Extending the JwtPayload interface to include additional data fields specific to the application.
 interface ExtendedJwt extends JwtPayload {
+  id: string;
+  email: string;
+  username: ReactNode;
   data: {
     username: string;
     email: string;
