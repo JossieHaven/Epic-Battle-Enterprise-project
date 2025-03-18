@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import "./NavBar.css";
 const NavigationBar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
-
   useEffect(() => {
     const token = localStorage.getItem("id_token");
     setIsAuthenticated(!!token);
@@ -49,5 +48,6 @@ const NavigationBar = () => {
     </nav>
   );
 };
+
 
 export default NavigationBar;

@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly; /* Space elements evenly */
+    justify-content: center;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
@@ -12,25 +12,43 @@
     background-size: cover;
     color: white;
     font-family: 'Bangers', cursive;
-    padding: 1vh 2vw;
+    padding-top: 7vh; /* Moves everything below the navbar */
+    position: relative;
 }
 
-/* Comicbook Superhero Themed Logo */
+/* 🔹 Navbar (Ensure it doesn't overlap content) */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6vh; /* Adjust height based on your navbar */
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000; /* Keeps navbar on top */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2vw;
+    color: white;
+}
+
+/* 🔹 Comicbook Superhero Themed Logo */
 .logo {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1vw;
-    font-size: clamp(2rem, 3.5vw, 4rem); /* Keeps size proportional */
+    font-size: clamp(2rem, 3.5vw, 4rem);
     text-transform: uppercase;
     background: rgba(0, 0, 0, 0.8);
     padding: 1vh 2vw;
     border-radius: 10px;
     max-width: 80%;
     text-align: center;
+    margin-top: 8vh; /* Pushes logo down from navbar */
 }
 
-/* Logo Text Styling */
+/* 🔹 Logo Text Styling */
 .logo span {
     display: inline-block;
     color: #ffcc00;
@@ -40,24 +58,25 @@
     animation: flicker-glow-pulse 2s infinite alternate;
 }
 
-/* 🔹 Hero, Logo, Villain Container */
+/* 🔹 Group container for Hero, Logo, Villain */
 .imageContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 1; /* Makes it fit dynamically */
+    flex-grow: 1;
     width: 100%;
-    gap: 1vw;
+    gap: 2vw;
     max-height: 60vh;
+    padding: 2vh;
 }
 
-/* Banners Adjust with Viewport */
+/* 🔹 Banners Adjust with Viewport */
 .banner {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: min(30vw, 250px); /* Prevents banners from getting too large */
+    width: min(30vw, 250px);
     height: min(50vh, 300px);
     position: relative;
     border-radius: 0.5rem;
@@ -66,7 +85,7 @@
     background-color: black;
 }
 
-/* Image inside Banner */
+/* 🔹 Image inside Banner */
 .image {
     width: 100%;
     height: 100%;
@@ -74,7 +93,7 @@
     opacity: 0.9;
 }
 
-/* Overlay for Text */
+/* 🔹 Overlay for Text */
 .overlay {
     position: absolute;
     inset: 0;
@@ -83,9 +102,9 @@
     justify-content: center;
 }
 
-/* Text Styling */
+/* 🔹 Text Styling */
 .text {
-    font-size: clamp(1rem, 2vw, 2.5rem); /* Adjusts to viewport */
+    font-size: clamp(1rem, 2vw, 2.5rem);
     font-weight: bold;
     color: white;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
@@ -103,6 +122,26 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
+    bottom: 5vh;
+}
+
+/* 🔹 Battle Button */
+.button {
+    padding: 0.75rem 1.5rem;
+    background-color: #FACC15;
+    color: black;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    text-transform: uppercase;
+    box-shadow: 0px 0px 12px rgba(255, 255, 0, 0.8);
+}
+
+.button:hover {
+    background-color: #EAB308;
+    box-shadow: 0px 0px 20px rgba(255, 255, 0, 1);
 }
 
 /* 🔹 Responsive Design Adjustments */
@@ -121,6 +160,7 @@
     .logo {
         font-size: 5vw;
         width: 90%;
+        margin-top: 10vh; /* Ensures it moves down on smaller screens */
     }
 
     .battleContainer {
@@ -146,6 +186,7 @@
     .logo {
         font-size: 6vw;
         text-align: center;
+        margin-top: 12vh; /* Further pushes down on smaller screens */
     }
 
     .text {
