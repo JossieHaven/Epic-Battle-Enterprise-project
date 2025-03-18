@@ -5,6 +5,11 @@ export interface Character {
     image: string;
     name: string;
     alignment: string;
-    powerstats: {intelligence: number, strength: number, speed: number, durability: number, power: number, combat: number}
+    intelligence: string;
+    strength: string;
+    speed: string; 
+    durability: string;
+    power: string;
+    combat: string;
   }
   

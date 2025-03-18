@@ -3,10 +3,13 @@ export interface CharacterDetails {
     publisher: string;
     description: string;
     image: string;
-    powerstats: {intelligence: number, strength: number, speed: number, durability: number, power: number, combat: number};
+    intelligence: string; 
+    strength: string;
+    speed: string;
+    durability: string;
+    power: string;
+    ombat: string;
     alignment: string;
-    gender: string;
-    race: string
   }
   
   export interface ICharacter {
