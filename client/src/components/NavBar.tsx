@@ -26,9 +26,6 @@ const NavigationBar = () => {
               <Link to="/profile">Profile</Link>
             </li>
             <li>
-              <Link to="/battle">Battle</Link>
-            </li>
-            <li>
               <button className="logout-button" onClick={handleLogout}>
                 Logout
               </button>
