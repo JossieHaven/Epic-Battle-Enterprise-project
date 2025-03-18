@@ -6,7 +6,7 @@
       "power": 100,
       "defense": 90,
       "ability": "Flight, Super Strength, Heat Vision",
-      "allignment": "hero"
+      "alignment": "hero"
     },
     {
       "id": "2",
@@ -15,7 +15,7 @@
       "power": 85,
       "defense": 80,
       "ability": "Martial Arts, Stealth, Genius Intellect",
-      "allignment": "hero"
+      "alignment": "hero"
     },
     {
       "id": "3",
@@ -24,7 +24,7 @@
       "power": 95,
       "defense": 85,
       "ability": "Super Strength, Lasso of Truth, Combat Skills",
-      "allignment": "hero"
+      "alignment": "hero"
     },
     {
       "id": "4",
@@ -33,7 +33,7 @@
       "power": 90,
       "defense": 70,
       "ability": "Super Speed, Time Travel, Lightning Reflexes",
-      "allignment": "hero"
+      "alignment": "hero"
     },
     {
       "id": "5",
@@ -42,7 +42,7 @@
       "power": 75,
       "defense": 60,
       "ability": "Psychological Warfare, Intelligence, Deception",
-      "allignment": "villain"
+      "alignment": "villain"
     },
     {
       "id": "6",
@@ -51,7 +51,7 @@
       "power": 70,
       "defense": 65,
       "ability": "Genius Intellect, Strategic Planning, Wealth",
-      "allignment": "villain"
+      "alignment": "villain"
     },
     {
       "id": "7",
@@ -60,7 +60,7 @@
       "power": 80,
       "defense": 70,
       "ability": "Acrobatics, Hand-to-Hand Combat, Gadgets",
-      "allignment": "villain"
+      "alignment": "villain"
     },
     {
       "id": "8",
@@ -69,7 +69,7 @@
       "power": 100,
       "defense": 95,
       "ability": "Omega Beams, Super Strength, Telepathy",
-      "allignment": "villain"
+      "alignment": "villain"
     }
   ]
   

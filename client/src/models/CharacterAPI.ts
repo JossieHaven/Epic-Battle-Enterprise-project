@@ -4,7 +4,7 @@ export interface CharacterDetails {
     description: string;
     image: string;
     powerstats: {intelligence: number, strength: number, speed: number, durability: number, power: number, combat: number};
-    allignment: string;
+    alignment: string;
     gender: string;
     race: string
   }

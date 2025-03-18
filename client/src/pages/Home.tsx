@@ -35,7 +35,7 @@ const Home = () => {
       </div>
 
       {/* Start Battle Button */}
-      <Link to="/character-selection">
+      <Link to="/search">
         <StyledWrapper>
           <button>
             B A T T L E
