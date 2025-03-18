@@ -6,13 +6,8 @@ import Auth from "../utils/auth";
 import { SAVE_CHARACTER } from "../utils/mutations.js";
 import { saveCharacterIds, getSavedCharacterIds } from "../utils/localStorage.js";
 import type { Character } from "../models/Character.js";
-<<<<<<< HEAD
 import SearchForm from "../components/SearchForm.js"; // Import SearchForm component
 import { SEARCH_CHARACTER } from "../utils/queries.js";
-=======
-import SearchForm from "../components/SearchForm.js"; 
-import "./SearchCharacter.css";
->>>>>>> 4f85944e6800ccfeba4bc974b0ecaf7fa0f92537
 
 
 const SearchCharacters = () => {
