@@ -18,7 +18,7 @@ const Login = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   // GraphQL mutation
-  const [loginUser, { error }] = useMutation(LOGIN_USER);
+  const [loginUser] = useMutation(LOGIN_USER);
 
   // Handle input changes
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

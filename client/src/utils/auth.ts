@@ -10,6 +10,7 @@ interface ExtendedJwt extends JwtPayload {
 }
 
 class AuthService {
+  user: any;
   // This method decodes the JWT token to get the user's profile information.
   getProfile() {
     // jwtDecode is used to decode the JWT token and return its payload.
