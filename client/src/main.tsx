@@ -1,15 +1,15 @@
-import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import "./App.css"; 
-import App from "./App";
-import Home from "./pages/Home";
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import SearchCharacters from "./pages/SearchCharacters";
-import BattleArena from "./pages/BattleArena"; 
-import Profile from "./pages/Profile";
-import ErrorPage from "./pages/Error";
+import './App.css'; 
+import App from './App';
+import Home from './pages/Home';
+import Signup from './pages/Signup';
+import Login from './pages/Login';
+import SearchCharacters from './pages/SearchCharacters';
+import BattleArena from './pages/BattleArena'; 
+import ErrorPage from './pages/Error';
+import Profile from './pages/UserProfile';
 
 const router = createBrowserRouter([
   {
@@ -18,16 +18,16 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       { index: true, element: <Home /> },
-      { path: "login", element: <Login /> },
-      { path: "signup", element: <Signup /> },
-      { path: "search", element: <SearchCharacters /> },
-      { path: "battle", element: <BattleArena /> },
-      { path: "profile", element: <Profile /> },
-    ],
+      { path: "/login", element: <Login /> },
+      { path: "/signup", element: <Signup /> },
+      { path: "/search", element: <SearchCharacters /> },
+      { path: "/battle", element: <BattleArena /> },
+      { path: "/profile", element: <Profile /> } 
+    ]
   },
 ]);
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
     <RouterProvider router={router} />
