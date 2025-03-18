@@ -58,7 +58,7 @@ const SearchCharacters = () => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) return false;
 
-    localStorage.setItem(alignment, JSON.stringify(characterId));
+    localStorage.setItem(alignment, JSON.stringify(characterToSave));
 
     try {
       const { data } = await saveCharacter({ variables: { ...characterToSave } });
