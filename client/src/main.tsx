@@ -1,13 +1,13 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import './App.css'; 
-import App from './App';
-import Home from './pages/Home';
-import Signup from './pages/Signup';
-import Login from './pages/Login';
-import ErrorPage from './pages/Error';
-import SearchCharacters from './pages/SearchCharacters';
+import "./App.css";
+import App from "./App";
+import Home from "./pages/Home";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+import ErrorPage from "./pages/Error";
+import SearchCharacters from "./pages/SearchCharacters";
 
 const router = createBrowserRouter([
   {
@@ -19,8 +19,8 @@ const router = createBrowserRouter([
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
       { path: "/character-selection", element: <CharacterSelection /> },
-      { path: "/battle", element: <BattleArena /> }
-    ]
+      { path: "/battle", element: <BattleArena /> },
+    ],
   },
 ]);
 
