@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 import type { FormEvent } from "react";
-import { Container, Col, Form, Button, Card, Row } from "react-bootstrap";
+import { Container, Card, Row, Col, Button } from "react-bootstrap";
 import { useLazyQuery, useMutation, gql } from "@apollo/client";
 import Auth from "../utils/auth";
 import { SAVE_CHARACTER } from "../utils/mutations.js";
-import {
-  saveCharacterIds,
-  getSavedCharacterIds,
-} from "../utils/localStorage.js";
+import { saveCharacterIds, getSavedCharacterIds } from "../utils/localStorage.js";
 import type { Character } from "../models/Character.js";
+import SearchForm from "../components/SearchForm.js"; // Import SearchForm component
 
 const SEARCH_CHARACTER = gql`
   query SearchCharacter($name: String!) {
@@ -32,26 +30,18 @@ const SEARCH_CHARACTER = gql`
 const SearchCharacters = () => {
   const [searchedCharacters, setSearchedCharacters] = useState<Character[]>([]);
   const [searchInput, setSearchInput] = useState("");
-  const [savedCharacterIds, setSavedCharacterIds] = useState(
-    getSavedCharacterIds()
-  );
+  const [savedCharacterIds, setSavedCharacterIds] = useState(getSavedCharacterIds());
 
-  const [searchCharacter, { loading, error, data }] =
-    useLazyQuery(SEARCH_CHARACTER);
+  const [searchCharacter, { loading, error, data }] = useLazyQuery(SEARCH_CHARACTER);
   const [saveCharacter] = useMutation(SAVE_CHARACTER);
-  // const [hero, setHero] = useState("");
-  // const [vilain, setVilain] = useState("");
 
-  // Save character IDs to local storage on component unmount
   useEffect(() => {
     return () => saveCharacterIds(savedCharacterIds);
   }, [savedCharacterIds]);
 
-  // Handle character search
   const handleFormSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!searchInput) return;
-
     searchCharacter({ variables: { name: searchInput } });
 
     if (error) {
@@ -59,7 +49,6 @@ const SearchCharacters = () => {
     }
   };
 
-  // Update searched characters when data is available
   useEffect(() => {
     if (data && data.searchCharacter) {
       const characterData = data.searchCharacter.map((character: any) => ({
@@ -79,32 +68,21 @@ const SearchCharacters = () => {
     }
   }, [data]);
 
-  // Save character to database
-  const handleSaveCharacter = async (
-    characterId: string,
-    alignment: "hero" | "villain"
-  ) => {
+  const handleSaveCharacter = async (characterId: string, alignment: "hero" | "villain") => {
     const characterToSave: Character = searchedCharacters.find(
       (character) => character.characterId === characterId
     )!;
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
     if (!token) return false;
-    console.log(characterId);
-    console.log(alignment);
 
     localStorage.setItem(alignment, JSON.stringify(characterId));
 
     try {
-      const { data } = await saveCharacter({
-        variables: { ...characterToSave },
-      });
+      const { data } = await saveCharacter({ variables: { ...characterToSave } });
 
       if (data.saveCharacter) {
-        setSavedCharacterIds([
-          ...savedCharacterIds,
-          characterToSave.characterId,
-        ]);
+        setSavedCharacterIds([...savedCharacterIds, characterToSave.characterId]);
       }
     } catch (err) {
       console.error(err);
@@ -119,25 +97,14 @@ const SearchCharacters = () => {
       <div className="text-light bg-dark p-5">
         <Container>
           <h1>Search for Characters!</h1>
-          <Form onSubmit={handleFormSubmit}>
-            <Row>
-              <Col xs={12} md={8}>
-                <Form.Control
-                  name="searchInput"
-                  value={searchInput}
-                  onChange={(e) => setSearchInput(e.target.value)}
-                  type="text"
-                  size="lg"
-                  placeholder="Search for a character"
-                />
-              </Col>
-              <Col xs={12} md={4}>
-                <Button type="submit" variant="success" size="lg">
-                  {loading ? "Searching..." : "Submit Search"}
-                </Button>
-              </Col>
-            </Row>
-          </Form>
+
+          {/* Use the imported SearchForm component */}
+          <SearchForm
+            value={searchInput}
+            onChange={setSearchInput}
+            onSubmit={handleFormSubmit}
+            isLoading={loading}
+          />
         </Container>
       </div>
 
@@ -171,26 +138,18 @@ const SearchCharacters = () => {
                   {Auth.loggedIn() && (
                     <>
                       <Button
-                        disabled={savedCharacterIds.includes(
-                          character.characterId
-                        )}
+                        disabled={savedCharacterIds.includes(character.characterId)}
                         className="btn-block btn-info"
-                        onClick={() =>
-                          handleSaveCharacter(character.characterId, "hero")
-                        }
+                        onClick={() => handleSaveCharacter(character.characterId, "hero")}
                       >
                         {savedCharacterIds.includes(character.characterId)
                           ? "This character has already been saved!"
                           : "Hero"}
                       </Button>
                       <Button
-                        disabled={savedCharacterIds.includes(
-                          character.characterId
-                        )}
+                        disabled={savedCharacterIds.includes(character.characterId)}
                         className="btn-block btn-info"
-                        onClick={() =>
-                          handleSaveCharacter(character.characterId, "villain")
-                        }
+                        onClick={() => handleSaveCharacter(character.characterId, "villain")}
                       >
                         {savedCharacterIds.includes(character.characterId)
                           ? "This character has already been saved!"
