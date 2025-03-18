@@ -9,7 +9,6 @@ import Login from './pages/Login';
 import CharacterSelection from './pages/CharacterSelection';
 import BattleArena from './pages/BattleArena'; 
 import ErrorPage from './pages/Error';
-import SearchCharacters from './pages/SearchCharacters';
 
 const router = createBrowserRouter([
   {
