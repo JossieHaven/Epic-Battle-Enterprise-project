@@ -7,8 +7,7 @@ import { SAVE_CHARACTER } from "../utils/mutations.js";
 import { saveCharacterIds, getSavedCharacterIds } from "../utils/localStorage.js";
 import type { Character } from "../models/Character.js";
 import SearchForm from "../components/SearchForm.js"; // Import SearchForm component
-import { SEARCH_CHARACTER } from "../utils/queries.js";
-
+import { SEARCH_CHARACTER } from "../utils/queries.js",
 
 const SearchCharacters = () => {
   const [searchedCharacters, setSearchedCharacters] = useState<Character[]>([]);
@@ -72,16 +71,12 @@ const SearchCharacters = () => {
     }
   };
 
-
-
-
   return (
     <>
       <div className="text-light bg-dark p-5">
         <Container>
           <h1>Search for Characters!</h1>
 
-          {/* Use the imported SearchForm component */}
           <SearchForm
             value={searchInput}
             onChange={setSearchInput}
@@ -99,30 +94,32 @@ const SearchCharacters = () => {
         </h2>
         <Row>
           {searchedCharacters.map((character) => (
-            <Col md="4" key={character.characterId}>
-              <Card border="dark">
+            <Col xs={12} sm={6} md={4} className="mb-4" key={character.characterId}>
+              <Card className="character-card">
                 {character.image && (
                   <Card.Img
                     src={character.image}
                     alt={`The cover for ${character.name}`}
                     variant="top"
+                    className="character-img"
                   />
                 )}
-                <Card.Body>
+                <Card.Body className="character-info">
                   <Card.Title>{character.name}</Card.Title>
-                    <p className="small">Publisher: {character.publisher}</p>
-                    <p className="small">Alignment: {character.alignment}</p>
-                    <p className="small">Intelligence: {character.intelligence ?? "N/A"}</p>
-                    <p className="small">Strength: {character.strength ?? "N/A"}</p>
-                    <p className="small">Speed: {character.speed ?? "N/A"}</p>
-                    <p className="small">Durability: {character.durability ?? "N/A"}</p>
-                    <p className="small">Power: {character.power ?? "N/A"}</p>
-                    <p className="small">Combat: {character.combat ?? "N/A"}</p>
+                  <p className="small">Publisher: {character.publisher}</p>
+                  <p className="small">Alignment: {character.alignment}</p>
+                  <p className="small">Intelligence: {character.intelligence ?? "N/A"}</p>
+                  <p className="small">Strength: {character.strength ?? "N/A"}</p>
+                  <p className="small">Speed: {character.speed ?? "N/A"}</p>
+                  <p className="small">Durability: {character.durability ?? "N/A"}</p>
+                  <p className="small">Power: {character.power ?? "N/A"}</p>
+                  <p className="small">Combat: {character.combat ?? "N/A"}</p>
+                  
                   {Auth.loggedIn() && (
                     <>
                       <Button
                         disabled={savedCharacterIds.includes(character.characterId)}
-                        className="btn-block btn-info"
+                        className="btn-block btn-info character-btn"
                         onClick={() => handleSaveCharacter(character.characterId, "hero")}
                       >
                         {savedCharacterIds.includes(character.characterId)
@@ -131,7 +128,7 @@ const SearchCharacters = () => {
                       </Button>
                       <Button
                         disabled={savedCharacterIds.includes(character.characterId)}
-                        className="btn-block btn-info"
+                        className="btn-block btn-info character-btn"
                         onClick={() => handleSaveCharacter(character.characterId, "villain")}
                       >
                         {savedCharacterIds.includes(character.characterId)
