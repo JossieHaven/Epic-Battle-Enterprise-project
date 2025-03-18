@@ -1,11 +1,17 @@
 // see SignupForm.js for comments
 import { useState } from "react";
+
+interface User {
+  username: string;
+  email: string;
+  password: string;
+  savedCharacters: any[]; // Replace 'any' with the appropriate type if known
+}
 import type { ChangeEvent, FormEvent } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 
 import { LOGIN_USER } from "../utils/mutations.js";
 import Auth from "../utils/auth";
-import type { User } from "../models/User.js";
 import { useMutation } from "@apollo/client";
 
 // biome-ignore lint/correctness/noEmptyPattern: <explanation>
