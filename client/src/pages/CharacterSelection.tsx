@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCharacter } from "../context/CharacterContext";
 import CharacterCard from "../components/CharacterCard";
 import charactersDataRaw from "../../../server/src/seeds/userData.json";
+import './CharacterSelection.css';
 
 interface Character {
   id: string;
@@ -11,7 +12,7 @@ interface Character {
   power: number;
   defense: number;
   ability: string;
-  allignment: "hero" | "villain";
+  alignment: "hero" | "villain";
 }
 
 const charactersData: Character[] = charactersDataRaw as Character[];
@@ -30,8 +31,8 @@ const CharacterSelection: React.FC = () => {
     }
   }, []);
 
-  const heroes = charactersData.filter((char) => char.allignment === "hero");
-  const villains = charactersData.filter((char) => char.allignment === "villain");
+  const heroes = charactersData.filter((char) => char.alignment === "hero");
+  const villains = charactersData.filter((char) => char.alignment === "villain");
 
   const handleHeroChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const hero = heroes.find((h) => h.id === event.target.value) || null;

@@ -33,7 +33,7 @@ interface CharacterArgs {
     };
     publisher: string;
     desription: string;
-    allignment: string;
+    alignment: string;
     gender: string;
     race: string;
     image: string;
@@ -65,7 +65,41 @@ const resolvers = {
       // If the user is not authenticated, throw an AuthenticationError
       throw new AuthenticationError("Could not authenticate user.");
     },
+
+    searchCharacter : async (_: any, { name }: { name: string }) => {
+      try {
+        const API_KEY = process.env.SUPER_HERO_API_KEY;
+        const response = await fetch(
+          `https://superheroapi.com/api/${API_KEY}/search/${name}`
+        );
+
+        const data = await response.json();
+
+        if (!data || data.response === "error") {
+          throw new Error(data.error || "Character not found");
+        }
+
+        // Extract relevant character data
+        return data.results.map((character: any) => ({
+          characterId: character.id,
+          name: character.name,
+          fullName: character.biography.fullName,
+          publisher: character.biography.publisher,
+          alignment: character.biography.alignment,
+          intelligence: character.powerstats.intelligence || '',
+          strength: character.powerstats.strength || '',
+          speed: character.powerstats.speed || '',
+          durability: character.powerstats.durability || '',
+          power: character.powerstats.powerstats || '',
+          combat: character.powerstats.combat || '',
+         image: character.image.url,
+        }));
+      } catch (error) {
+        throw new Error(`Failed to fetch character: ${error}`);
+      }
+    },
   },
+
   Mutation: {
     addUser: async (_parent: any, { userData }: AddUserArgs) => {
       // Create a new user with the provided username, email, and password
