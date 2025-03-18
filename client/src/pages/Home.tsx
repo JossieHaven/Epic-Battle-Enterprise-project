@@ -166,11 +166,11 @@ const StyledWrapper = styled.div`
 
   #leftTop {
     top: -1.96em;
-    left: -3.0em;
+    left: -3em;
   }
 
   #leftBottom {
-    top: 2.10em;
+    top: 2.1em;
     left: -2.15em;
   }
 
