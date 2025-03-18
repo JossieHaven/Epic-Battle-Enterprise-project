@@ -30,7 +30,7 @@ const Home = () => {
       <h1 className={styles.pageTitle}>Epic Battle Enterprise</h1>
 
       {/* Start Battle Button */}
-      <Link to="/character-selection">
+      <Link to="/search">
         <StyledWrapper>
           <button>
             B A T T L E
