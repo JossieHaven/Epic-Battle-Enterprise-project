@@ -9,6 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 
 import Navbar from '../src/components/NavBar';
+import { CharacterProvider } from './context/CharacterContext';
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
@@ -37,8 +38,10 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Navbar />
-      <Outlet />
+      <CharacterProvider> {/* ✅ Wrap CharacterProvider to ensure context is available */}
+        <Navbar />
+        <Outlet />
+      </CharacterProvider>
     </ApolloProvider>
   );
 }
