@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap");
+
+/* --- SIGNUP CONTAINER --- */
+.signup-container {
+  max-width: 400px;
+  margin: 120px auto 50px; /* Prevents overlap with navbar */
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-family: "Bangers", cursive;
+  color: #fff;
+}
+
+/* --- TITLE --- */
+.signup-title {
+  font-size: 2rem;
+  color: #ffcc00;
+  text-shadow: 2px 2px #000;
+}
+
+/* --- FORM STYLING --- */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.signup-form .form-label {
+  font-size: 1.2rem;
+  color: #ffcc00;
+}
+
+.signup-form .form-control {
+  padding: 12px;
+  font-size: 1rem;
+  border: 2px solid #ffcc00;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.signup-form .form-control:focus {
+  border-color: #ff3300;
+  box-shadow: 0 0 10px #ff3300;
+}
+
+/* --- SIGNUP BUTTON --- */
+.signup-btn {
+  font-size: 1.2rem;
+  font-family: "Bangers", cursive;
+  background: #ff3300;
+  color: #fff;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.signup-btn:hover {
+  background: #ffcc00;
+  color: #000;
+  transform: scale(1.05);
+}

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useCharacter } from "../context/CharacterContext";
 import CharacterCard from "../components/CharacterCard";
 import charactersDataRaw from "../../../server/src/seeds/userData.json";
+import './CharacterSelection.css';
 
 interface Character {
   id: string;
