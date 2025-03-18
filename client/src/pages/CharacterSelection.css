@@ -1,0 +1,185 @@
+/* --- IMPORTING FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Roboto+Condensed:wght@400;700&display=swap');
+
+/* --- COMIC BOOK BACKGROUND --- */
+body {
+  background: linear-gradient(135deg, #ffcc00, #ff3300);
+  background-size: cover;
+  font-family: 'Roboto Condensed', sans-serif;
+  text-align: center;
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* --- NAVBAR STYLING --- */
+.navbar {
+  width: 100%;
+  background-color: #222;
+  padding: 15px 0;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.navbar a {
+  color: #ffcc00;
+  font-size: 1.6rem;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 0 20px;
+  font-family: 'Bangers', cursive;
+}
+
+.navbar a:hover {
+  color: #ff3300;
+}
+
+/* --- MAIN CONTAINER --- */
+.character-selection {
+  max-width: 800px;
+  margin-top: 100px; /* Space for navbar */
+  padding: 40px;
+  background: #fff;
+  border: 5px solid #000;
+  box-shadow: 10px 10px 0 #000;
+  border-radius: 15px;
+}
+
+/* --- TITLE --- */
+.title {
+  font-family: 'Bangers', cursive;
+  font-size: 4rem;
+  color: #ff0000;
+  text-shadow: 5px 5px #000;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+/* --- DROPDOWN LABELS --- */
+.label-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #222;
+  text-shadow: 2px 2px #ff0000;
+  display: block;
+  width: 45%;
+}
+
+/* --- DROPDOWN MENUS --- */
+select {
+  width: 90%;
+  padding: 12px;
+  font-size: 1.4rem;
+  border: 3px solid #000;
+  background: #ffcc00;
+  color: #000;
+  font-weight: bold;
+  box-shadow: 4px 4px 0 #000;
+  cursor: pointer;
+  transition: 0.2s;
+  display: block;
+  margin: 0 auto;
+}
+
+select:hover {
+  background: #ff6600;
+  color: #fff;
+}
+
+/* --- CHARACTER GRID --- */
+.character-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* --- CHARACTER CARDS --- */
+.character-card {
+  width: 280px;
+  padding: 15px;
+  border: 4px solid #000;
+  background-color: #ffeb3b;
+  box-shadow: 6px 6px 0 #000;
+  text-align: center;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+
+.character-card:hover {
+  transform: scale(1.05);
+  box-shadow: 10px 10px 0 #000;
+}
+
+/* --- CHARACTER IMAGE --- */
+.character-image {
+  width: 100%;
+  height: auto;
+  border-bottom: 4px solid #000;
+  margin-bottom: 10px;
+}
+
+/* --- CHARACTER NAME --- */
+.character-name {
+  font-family: 'Bangers', cursive;
+  font-size: 2.2rem;
+  color: #ff0000;
+  text-shadow: 2px 2px #000;
+  text-transform: uppercase;
+}
+
+/* --- CHARACTER ABILITIES --- */
+.character-ability {
+  font-size: 1.4rem;
+  color: #222;
+  font-style: italic;
+}
+
+/* --- BATTLE BUTTON --- */
+.battle-button {
+  display: inline-block;
+  background-color: #ff0000;
+  color: #fff;
+  font-size: 2rem;
+  padding: 15px 40px;
+  margin-top: 30px;
+  border: 4px solid #000;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 6px 6px 0 #000;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* --- BATTLE BUTTON HOVER EFFECT --- */
+.battle-button:hover {
+  transform: scale(1.1);
+  box-shadow: 10px 10px 0 #000;
+  background-color: #ffcc00;
+  color: #000;
+  border-color: #000;
+}
+
+/* --- BUTTON PRESS EFFECT --- */
+.battle-button:active {
+  transform: scale(0.95);
+  box-shadow: 4px 4px 0 #000;
+}

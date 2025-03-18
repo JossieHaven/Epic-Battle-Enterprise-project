@@ -1,8 +1,10 @@
+/* Import custom superhero-style font */
 @import url("https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap");
+
 /* --- NAVBAR CONTAINER --- */
 .navbar {
   width: 100%;
-  background: linear-gradient(135deg, #FF0000, #FF9900);
+  background: linear-gradient(135deg, #ff0000, #ff9900);
   padding: 15px 0;
   text-align: center;
   position: fixed;
@@ -12,6 +14,7 @@
   z-index: 100;
   border-bottom: 4px solid #000;
 }
+
 /* --- NAV LINKS --- */
 .nav-links {
   display: flex;
@@ -21,6 +24,7 @@
   padding: 0;
   margin: 0;
 }
+
 /* --- NAV LINK STYLES --- */
 .nav-links a {
   text-decoration: none;
@@ -31,11 +35,13 @@
   padding: 8px 15px;
   border-radius: 5px;
 }
+
 .nav-links a:hover {
-  color: #FFCC00;
+  color: #ffcc00;
   text-shadow: 2px 2px #000;
   transform: scale(1.1);
 }
+
 /* --- LOGOUT BUTTON --- */
 .logout-button {
   font-family: "Bangers", cursive;
@@ -48,8 +54,9 @@
   border-radius: 5px;
   transition: all 0.3s ease-in-out;
 }
+
 .logout-button:hover {
-  color: #FFCC00;
+  color: #ffcc00;
   text-shadow: 2px 2px #000;
   transform: scale(1.1);
 }

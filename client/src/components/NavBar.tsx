@@ -7,11 +7,13 @@ const NavigationBar = () => {
     const token = localStorage.getItem("id_token");
     setIsAuthenticated(!!token);
   }, []);
+
   const handleLogout = () => {
     localStorage.removeItem("id_token");
     setIsAuthenticated(false);
     window.location.href = "/";
   };
+
   return (
     <nav className="navbar">
       <ul className="nav-links">
@@ -46,4 +48,6 @@ const NavigationBar = () => {
     </nav>
   );
 };
+
+
 export default NavigationBar;
