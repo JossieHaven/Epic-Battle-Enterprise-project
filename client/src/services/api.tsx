@@ -13,3 +13,22 @@ export const fetchLeaderboard = async (sortBy: string = "power", alignment: stri
     const response = await axios.get(url);
     return response.data;
 };
+
+export const fetchUserProfile = async (userId: string) => {
+    const response = await axios.get(`${API_BASE_URL}/${userId}`);
+    return response.data;
+};
+
+export const updateUserProfile = async (userId: string, profileData: any) => {
+    return axios.put(`${API_BASE_URL}/${userId}`, profileData);
+};
+
+export const fetchUserFavorites = async (userId: string) => {
+    const response = await axios.get(`${API_BASE_URL}/${userId}/favorites`);
+    return response.data;
+};
+
+export const fetchUserBattles = async (userId: string) => {
+    const response = await axios.get(`${API_BASE_URL}/${userId}/battles`);
+    return response.data;
+};

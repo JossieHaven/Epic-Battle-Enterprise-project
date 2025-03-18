@@ -19,7 +19,7 @@ const Login = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   // Mutation for logging in
-  const [loginUser, { error }] = useMutation(LOGIN_USER);
+  const [loginUser] = useMutation(LOGIN_USER);
 
   // Handle input change
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {

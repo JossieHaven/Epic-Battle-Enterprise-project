@@ -26,6 +26,7 @@
   "devDependencies": {
     "@testing-library/cypress": "^10.0.2",
     "@types/react": "^18.3.3",
+    "@types/react-bootstrap": "^0.32.37",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.21",
     "concurrently": "^8.2.2",
@@ -42,6 +43,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.14",
+    "react-bootstrap": "^2.10.9",
     "styled-components": "^6.1.15"
   }
 }
