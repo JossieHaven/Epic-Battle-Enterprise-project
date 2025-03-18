@@ -1,14 +1,14 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import "./App.css"; 
+import "./App.css";
 import App from "./App";
 import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import SearchCharacters from "./pages/SearchCharacters";
-import BattleArena from "./pages/BattleArena"; 
-import Profile from "./pages/Profile";
+import BattleArena from "./pages/BattleArena";
+// import Profile from "./pages/Profile";
 import ErrorPage from "./pages/Error";
 
 const router = createBrowserRouter([
@@ -22,14 +22,12 @@ const router = createBrowserRouter([
       { path: "signup", element: <Signup /> },
       { path: "search", element: <SearchCharacters /> },
       { path: "battle", element: <BattleArena /> },
-      { path: "profile", element: <Profile /> },
+      // { path: "profile", element: <Profile /> },
     ],
   },
 ]);
 
 const rootElement = document.getElementById("root");
 if (rootElement) {
-  ReactDOM.createRoot(rootElement).render(
-    <RouterProvider router={router} />
-  );
+  ReactDOM.createRoot(rootElement).render(<RouterProvider router={router} />);
 }
