@@ -12,19 +12,18 @@
     background-size: cover;
     color: white;
     font-family: 'Bangers', cursive;
-    padding-top: 7vh; /* Moves everything below the navbar */
+    padding-top: 7vh; 
     position: relative;
 }
 
-/* 🔹 Navbar (Ensure it doesn't overlap content) */
 .navbar {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 6vh; /* Adjust height based on your navbar */
+    height: 6vh; 
     background: rgba(0, 0, 0, 0.9);
-    z-index: 1000; /* Keeps navbar on top */
+    z-index: 1000;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -32,7 +31,7 @@
     color: white;
 }
 
-/* 🔹 Comicbook Superhero Themed Logo */
+
 .logo {
     display: flex;
     justify-content: center;
@@ -45,10 +44,9 @@
     border-radius: 10px;
     max-width: 80%;
     text-align: center;
-    margin-top: 8vh; /* Pushes logo down from navbar */
+    margin-top: 8vh; 
 }
 
-/* 🔹 Logo Text Styling */
 .logo span {
     display: inline-block;
     color: #ffcc00;
@@ -58,7 +56,6 @@
     animation: flicker-glow-pulse 2s infinite alternate;
 }
 
-/* 🔹 Group container for Hero, Logo, Villain */
 .imageContainer {
     display: flex;
     justify-content: center;
@@ -70,7 +67,6 @@
     padding: 2vh;
 }
 
-/* 🔹 Banners Adjust with Viewport */
 .banner {
     flex: 1;
     display: flex;
@@ -85,7 +81,6 @@
     background-color: black;
 }
 
-/* 🔹 Image inside Banner */
 .image {
     width: 100%;
     height: 100%;
@@ -93,7 +88,6 @@
     opacity: 0.9;
 }
 
-/* 🔹 Overlay for Text */
 .overlay {
     position: absolute;
     inset: 0;
@@ -102,7 +96,6 @@
     justify-content: center;
 }
 
-/* 🔹 Text Styling */
 .text {
     font-size: clamp(1rem, 2vw, 2.5rem);
     font-weight: bold;
@@ -112,7 +105,6 @@
     z-index: 10;
 }
 
-/* 🔹 Battle Button Container */
 .battleContainer {
     display: flex;
     justify-content: center;
@@ -125,7 +117,6 @@
     bottom: 5vh;
 }
 
-/* 🔹 Battle Button */
 .button {
     padding: 0.75rem 1.5rem;
     background-color: #FACC15;
@@ -144,7 +135,6 @@
     box-shadow: 0px 0px 20px rgba(255, 255, 0, 1);
 }
 
-/* 🔹 Responsive Design Adjustments */
 @media (max-width: 1024px) {
     .imageContainer {
         flex-direction: column;
@@ -160,7 +150,7 @@
     .logo {
         font-size: 5vw;
         width: 90%;
-        margin-top: 10vh; /* Ensures it moves down on smaller screens */
+        margin-top: 10vh;
     }
 
     .battleContainer {
@@ -186,7 +176,7 @@
     .logo {
         font-size: 6vw;
         text-align: center;
-        margin-top: 12vh; /* Further pushes down on smaller screens */
+        margin-top: 12vh; 
     }
 
     .text {
@@ -199,7 +189,6 @@
     }
 }
 
-/* 🔹 Flickering, Glowing, Pulsating Effect */
 @keyframes flicker-glow-pulse {
     0% {
         opacity: 1;

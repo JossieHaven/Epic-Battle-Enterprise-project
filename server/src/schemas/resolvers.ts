@@ -86,7 +86,7 @@ const resolvers = {
           strength: character.powerstats.strength || "",
           speed: character.powerstats.speed || "",
           durability: character.powerstats.durability || "",
-          power: character.powerstats.powerstats || "",
+          power: character.powerstats.power || "",
           combat: character.powerstats.combat || "",
           image: character.image.url,
         }));
