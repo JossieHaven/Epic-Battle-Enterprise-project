@@ -19,24 +19,19 @@ const  NavigationBar = () => {
           <h1 className="m-0">Sign Up</h1>
         </Link>
       </li>
-    </ul><ul>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/battle">Battle</Link></li>
-
-        {auth?.user ? (
-          <>
-            <li><Link to="/profile">Profile</Link></li>
-            <li><button onClick={auth.logout}>Logout</button></li>
-          </>
-                ) : (
-                  <>
-                    <li><Link to="/login">Login</Link></li>
-                    <li><Link to="/signup">Sign Up</Link></li>
-                  </>
-                )}
-              </ul>
-            </>
-          );
-        };
-        
-        export default NavigationBar;
+      <li className="nav-item" style={{ padding: '0 10px' }}>
+        <Link to="/Profile">
+          <h1 className="m-0">Profile</h1>
+        </Link>
+      </li>
+      <li className="nav-item" style={{ padding: '0 10px' }}>
+        <Link to="/Battle">
+          <h1 className="m-0">Battle</h1>
+        </Link>
+      </li>
+        </ul>
+        </>
+      );
+    };
+    
+    export default NavigationBar;
