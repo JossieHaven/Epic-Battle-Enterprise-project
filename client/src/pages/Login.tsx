@@ -3,25 +3,24 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
 import AuthService from "../utils/auth";
 import { useNavigate } from "react-router-dom";
-// import type { User } from "../models/User.js";
 import { Form, Button, Alert } from "react-bootstrap";
+import "./Login.css"; // ✅ Import CSS for styling
 
 const Login = () => {
   const navigate = useNavigate();
 
-  // State to store user input
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  const [validated] = useState(false);
+  const [validated, setValidated] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
 
-  // Mutation for logging in
+  // GraphQL mutation
   const [loginUser] = useMutation(LOGIN_USER);
 
-  // Handle input change
+  // Handle input changes
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -29,6 +28,8 @@ const Login = () => {
   // Handle form submission
   const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setValidated(true);
+
     try {
       const { data } = await loginUser({
         variables: { email: formData.email, password: formData.password },
@@ -36,62 +37,55 @@ const Login = () => {
 
       if (data?.login?.token) {
         AuthService.login(data.login.token);
-        navigate("/"); // Redirect after successful login
+        navigate("/profile"); // ✅ Redirect to profile after login
       }
     } catch (err) {
       console.error("Login Error:", err);
+      setShowAlert(true);
     }
   };
 
   return (
-    <>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        <Alert
-          dismissible
-          onClose={() => setShowAlert(false)}
-          show={showAlert}
-          variant="danger"
-        >
-          Something went wrong with your login credentials!
-        </Alert>
+    <div className="login-container">
+      <h2 className="login-title">Login to Your Account</h2>
+      <Form noValidate validated={validated} onSubmit={handleFormSubmit} className="login-form">
+        {showAlert && (
+          <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant="danger">
+            Invalid email or password. Please try again.
+          </Alert>
+        )}
+
         <Form.Group className="mb-3">
           <Form.Label htmlFor="email">Email</Form.Label>
           <Form.Control
-            type="text"
-            placeholder="Your email"
+            type="email"
+            placeholder="Enter your email"
             name="email"
             onChange={handleInputChange}
-            value={formData.email || ""}
+            value={formData.email}
             required
           />
-          <Form.Control.Feedback type="invalid">
-            Email is required!
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">Email is required!</Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className="mb-3">
           <Form.Label htmlFor="password">Password</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Your password"
+            placeholder="Enter your password"
             name="password"
             onChange={handleInputChange}
-            value={formData.password || ""}
+            value={formData.password}
             required
           />
-          <Form.Control.Feedback type="invalid">
-            Password is required!
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type="invalid">Password is required!</Form.Control.Feedback>
         </Form.Group>
-        <Button
-          disabled={!(formData.email && formData.password)}
-          type="submit"
-          variant="success"
-        >
-          Submit
+
+        <Button disabled={!(formData.email && formData.password)} type="submit" className="login-btn">
+          Login
         </Button>
       </Form>
-    </>
+    </div>
   );
 };
 

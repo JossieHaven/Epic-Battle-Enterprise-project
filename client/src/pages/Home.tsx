@@ -2,11 +2,19 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import heroBanner from "../assets/hero-banner.jpg";
 import villainBanner from "../assets/villain-banner.jpg";
-import styles from "./Home.module.css"; // ✅ Import styles
+import styles from "./Home.module.css";
+
 
 const Home = () => {
   return (
     <main className={styles.main}>
+      {/* Superhero Themed Logo (Now Below Navbar) */}
+      <div className={styles.logo}>
+        <span className={styles.epic}>EPIC</span>
+        <span className={styles.battle}>BATTLE</span>
+        <span className={styles.enterprise}>ENTERPRISE</span>
+      </div>
+
       {/* Flex container for images */}
       <div className={styles.imageContainer}>
         {/* Hero Banner */}
@@ -25,9 +33,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {/* Page Title */}
-      <h1 className={styles.pageTitle}>Epic Battle Enterprise</h1>
 
       {/* Start Battle Button */}
       <Link to="/character-selection">
@@ -49,28 +54,34 @@ const Home = () => {
   );
 };
 
-// ✅ Styled Components for Animated Button
+// Styled Components for Animated Button
 const StyledWrapper = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 1.5rem;
 
   button {
-    position: relative;
+      position: relative;
     width: 11em;
     height: 4em;
     outline: none;
-    transition: 0.1s;
-    background-color: transparent;
-    border: none;
-    font-size: 13px;
-    font-weight: bold;
-    color: #ddebf0;
+    transition: 0.2s;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid rgb(255,255,0);
+    font-size: 35px;
+    letter-spacing: 5px;
+    font-weight: 900;
+    color: rgb(255, 255, 0);
+    text-shadow: -2px -2px 0px rgba(0, 0, 0, 0.9), 
+      2px 2px 0px rgba(0, 0, 0, 0.9),  
+      0px 0px 15px rgb(255, 255, 255), 
+      0px 0px 25px rgba(4, 0, 255, 0.8); 
     cursor: pointer;
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.8);
   }
 
   #clip {
-    --color: #2761c3;
+    --color:rgb(22, 14, 172);
     position: absolute;
     top: 0;
     overflow: hidden;
@@ -93,7 +104,7 @@ const StyledWrapper = styled.div`
   .arrow {
     position: absolute;
     transition: 0.2s;
-    background-color: #2761c3;
+    background-color:rgb(255, 0, 0);
     top: 35%;
     width: 11%;
     height: 30%;
@@ -125,8 +136,8 @@ const StyledWrapper = styled.div`
     position: absolute;
     width: 4em;
     height: 4em;
-    background-color: #2761c3;
-    box-shadow: inset 1px 1px 8px #2781c3;
+    background-color:rgb(255, 0, 0);
+    box-shadow: inset 3px 3px 15px rgb(195, 39, 39);
     transform: scale(1) rotate(45deg);
     transition: 0.2s;
   }
@@ -182,7 +193,7 @@ const StyledWrapper = styled.div`
 
   @keyframes changeColor8 {
     from {
-      background-color: #2781c3;
+      background-color:rgb(195, 39, 39);
     }
     to {
       background-color: #27c39f;

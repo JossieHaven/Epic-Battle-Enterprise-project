@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api/leaderboard";
+const API_BASE_URL = "http://localhost:5001/api/leaderboard";
 
 export const fetchLeaderboard = async (sortBy: string = "power", alignment: string = "all") => {
     let url = API_BASE_URL;
