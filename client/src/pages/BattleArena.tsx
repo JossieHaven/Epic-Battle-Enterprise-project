@@ -1,10 +1,26 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { SEARCH_CHARACTER_BY_ID } from "../utils/queries";
+import { useLazyQuery } from "@apollo/client/react/hooks/useLazyQuery";
+
 
 const BattleArena = () => {
-  const location = useLocation();
   const navigate = useNavigate();
+  const [hero, setHero] = useState<any>(null);
+  const [villain, setVillain] = useState<any>(null);
+    const [searchCharacterById, { loading, error, data }] = useLazyQuery(SEARCH_CHARACTER_BY_ID);
+  
 
-  const { hero, villain } = location.state || {};
+  useEffect(() => {
+    // Retrieve hero and villain from localStorage
+    const storedHero = localStorage.getItem("hero");
+    const storedVillain = localStorage.getItem("villain");
+
+    if (storedHero && storedVillain) {
+      setHero(JSON.parse(storedHero));
+      setVillain(JSON.parse(storedVillain));
+    }
+  }, []);
 
   if (!hero || !villain) {
     return (
@@ -34,8 +50,11 @@ const BattleArena = () => {
             className="w-40 h-40 object-cover rounded-lg border border-blue-500"
           />
           <p className="mt-2">Power: {hero.power}</p>
-          <p>Defense: {hero.defense}</p>
-          <p>Ability: {hero.ability}</p>
+          <p>Intelligence: {hero.intelligence}</p>
+          <p>Strength: {hero.strength}</p>
+          <p>Speed: {hero.speed}</p>
+          <p>Durability: {hero.durability}</p>
+          <p>Combat: {hero.combat}</p>
         </div>
 
         {/* VS Section */}
@@ -50,8 +69,11 @@ const BattleArena = () => {
             className="w-40 h-40 object-cover rounded-lg border border-red-500"
           />
           <p className="mt-2">Power: {villain.power}</p>
-          <p>Defense: {villain.defense}</p>
-          <p>Ability: {villain.ability}</p>
+          <p>Intelligence: {villain.intelligence}</p>
+          <p>Strength: {villain.strength}</p>
+          <p>Speed: {villain.speed}</p>
+          <p>Durability: {villain.durability}</p>
+          <p>Combat: {villain.combat}</p>
         </div>
       </div>
 

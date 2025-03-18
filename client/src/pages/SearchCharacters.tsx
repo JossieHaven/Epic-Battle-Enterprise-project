@@ -1,32 +1,13 @@
 import { useState, useEffect } from "react";
 import type { FormEvent } from "react";
 import { Container, Card, Row, Col, Button } from "react-bootstrap";
-import { useLazyQuery, useMutation, gql } from "@apollo/client";
+import { useLazyQuery, useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { SAVE_CHARACTER } from "../utils/mutations.js";
 import { saveCharacterIds, getSavedCharacterIds } from "../utils/localStorage.js";
 import type { Character } from "../models/Character.js";
-import SearchForm from "../components/SearchForm.js"; 
-import "./SearchCharacter.css";
-
-const SEARCH_CHARACTER = gql`
-  query SearchCharacter($name: String!) {
-    searchCharacter(name: $name) {
-      characterId
-      name
-      fullName
-      publisher
-      alignment
-      intelligence
-      strength
-      speed
-      durability
-      combat
-      power
-      image
-    }
-  }
-`;
+import SearchForm from "../components/SearchForm.js"; // Import SearchForm component
+import { SEARCH_CHARACTER } from "../utils/queries.js",
 
 const SearchCharacters = () => {
   const [searchedCharacters, setSearchedCharacters] = useState<Character[]>([]);
