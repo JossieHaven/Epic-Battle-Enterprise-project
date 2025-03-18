@@ -7,6 +7,13 @@ import styles from "./Home.module.css"; // ✅ Import styles
 const Home = () => {
   return (
     <main className={styles.main}>
+      {/* Superhero Themed Logo (Now Below Navbar) */}
+      <div className={styles.logo}>
+        <span className={styles.epic}>EPIC</span>
+        <span className={styles.battle}>BATTLE</span>
+        <span className={styles.enterprise}>ENTERPRISE</span>
+      </div>
+
       {/* Flex container for images */}
       <div className={styles.imageContainer}>
         {/* Hero Banner */}
@@ -25,9 +32,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-      {/* Page Title */}
-      <h1 className={styles.pageTitle}>Epic Battle Enterprise</h1>
 
       {/* Start Battle Button */}
       <Link to="/character-selection">
