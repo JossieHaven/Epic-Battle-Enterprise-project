@@ -9,7 +9,6 @@ import type { Character } from "../models/Character.js";
 import SearchForm from "../components/SearchForm.js"; // Import SearchForm component
 import { SEARCH_CHARACTER } from "../utils/queries.js";
 
-
 const SearchCharacters = () => {
   const [searchedCharacters, setSearchedCharacters] = useState<Character[]>([]);
   const [searchInput, setSearchInput] = useState("");
