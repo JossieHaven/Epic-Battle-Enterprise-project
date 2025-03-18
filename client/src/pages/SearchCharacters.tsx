@@ -89,48 +89,7 @@ const SearchCharacters = () => {
     }
   };
 
-  const handleSaveCharacterHero = async (characterId: string) => {
-    const characterToSave: Character = searchedCharacters.find(
-      (character) => character.characterId === characterId
-    )!;
 
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
-    if (!token) return false;
-
-    try {
-      const { data } = await saveCharacter({
-        variables: { ...characterToSave },
-      });
-
-      if (data.saveCharacter) {
-        setSavedCharacterIds([...savedCharacterIds, characterToSave.characterId]);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-
-  const handleSaveCharacterVillain = async (characterId: string) => {
-    const characterToSave: Character = searchedCharacters.find(
-      (character) => character.characterId === characterId
-    )!;
-
-    const token = Auth.loggedIn() ? Auth.getToken() : null;
-    if (!token) return false;
-
-    try {
-      const { data } = await saveCharacter({
-        variables: { ...characterToSave },
-      });
-
-      if (data.saveCharacter) {
-        setSavedCharacterIds([...savedCharacterIds, characterToSave.characterId]);
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
 
 
   return (
