@@ -19,43 +19,42 @@ function UserProfile() {
     const [updatedUsername, setUpdatedUsername] = useState("");
     const [updatedEmail, setUpdatedEmail] = useState("");
 
-    useEffect(() => {
-        if (!auth?.user) {
-            navigate("/login");
-        } else {
-            const loadUserData = async () => {
-                try {
-                    if (!auth.user) return;
-                    const userData = await fetchUserProfile(auth.user.id);
-                    setUser(userData);
-                    setUpdatedUsername(userData.username);
-                    setUpdatedEmail(userData.email);
+    // useEffect(() => {
+    //     if (!auth?.user) {
+    //         navigate("/login");
+    //     } else {
+    //         const loadUserData = async () => {
+    //             try {
+    //                 if (!auth.user) return;
+    //                 const userData = await fetchUserProfile(auth.user.id);
+    //                 setUser(userData);
+    //                 setUpdatedUsername(userData.username);
+    //                 setUpdatedEmail(userData.email);
 
-                    const favoriteCharacters = await fetchUserFavorites(auth.user.id);
-                    setFavorites(favoriteCharacters);
+    //                 const favoriteCharacters = await fetchUserFavorites(auth.user.id);
+    //                 setFavorites(favoriteCharacters);
 
-                    const battleHistory = await fetchUserBattles(auth.user.id);
-                    setBattles(battleHistory);
-                } catch (err) {
-                    console.error("Failed to load user data", err);
-                }
-            };
+    //                 const battleHistory = await fetchUserBattles(auth.user.id);
+    //                 setBattles(battleHistory);
+    //             } catch (err) {
+    //                 console.error("Failed to load user data", err);
+    //             }
+    //         };
 
-            loadUserData();
-        }
-    }, [auth, navigate]);
+    //         loadUserData();
+    //     }
+    // }, [auth, navigate]);
 
     const handleUpdateProfile = async () => {
         try {
             await updateUserProfile(auth?.user?.id || "", { username: updatedUsername, email: updatedEmail });
-            setUser((prevUser) => prevUser ? { ...prevUser, username: updatedUsername, email: updatedEmail } : null);
+            setUser((prevUser: any) => prevUser ? { ...prevUser, username: updatedUsername, email: updatedEmail } : null);
             setEditMode(false);
         } catch (err) {
             console.error("Failed to update profile", err);
         }
     };
 
-    if (!auth?.user) return null;
 
     return (
         <div className="profile-container">
