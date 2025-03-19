@@ -1,121 +1,129 @@
-/* General Profile Container */
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap");
+
+/* --- PROFILE CONTAINER (Blends into Background) --- */
 .profile-container {
-    max-width: 600px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #1e1e2f;  /* Dark background for a sleek look */
-    color: #f1f1f1;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    font-family: "Bangers", cursive;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
-}
-
-/* Profile Heading */
-.profile-container h2 {
-    font-size: 28px;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-/* Logout Button */
-.logout-btn {
-    background: #ff4c4c;
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: 0.3s;
-    margin-top: 15px;
-}
-
-.logout-btn:hover {
-    background: #cc0000;
-}
-
-/* Section Titles */
-.profile-container h3 {
-    font-size: 22px;
-    margin-top: 20px;
-    font-weight: bold;
-    text-decoration: underline;
-}
-
-/* Lists */
-.profile-container ul {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 10px;
-}
-
-.profile-container li {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 8px;
-    transition: 0.2s;
-}
-
-.profile-container li:hover {
-    background: rgba(255, 255, 255, 0.2);
-}
-
-/* No Data Text */
-.profile-container p {
-    font-size: 16px;
-    font-style: italic;
-    color: #bbb;
-}
-
-/* Edit Mode Input Fields */
-.edit-container {
+    color: #fff;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
 }
 
-.edit-container label {
-    font-size: 14px;
-    font-weight: bold;
+/* --- PROFILE TITLE --- */
+.profile-title {
+    font-size: 2.5rem;
+    font-family: "Bangers", cursive;
+    color: #222;
+    text-shadow: 4px 4px 0px #ffde03, 6px 6px 0px #d32f2f;
+    margin-bottom: 1.5rem;
 }
 
-.edit-container input {
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
+/* --- PROFILE INFO (NO BACKGROUND) --- */
+.profile-info {
+    width: 400px;
     text-align: center;
 }
 
-/* Save & Cancel Buttons */
-.edit-container .save-btn,
-.edit-container .cancel-btn {
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
-    transition: 0.3s;
+/* --- EDIT PROFILE FORM (NO BOX) --- */
+.edit-profile {
+    width: 400px;
+    text-align: center;
+}
+
+/* --- PROFILE LABELS --- */
+.profile-label {
+    font-size: 1.4rem;
+    color: #ffcc00;
+    text-shadow: 3px 3px #000;
+    display: block;
     margin-top: 10px;
+}
+
+/* --- PROFILE INPUTS --- */
+.profile-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.2rem;
+    border: 2px solid #ffcc00;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+/* --- PROFILE BUTTONS --- */
+.profile-button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.profile-btn {
+    font-size: 1.4rem;
+    font-family: "Bangers", cursive;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.edit-btn {
+    background: #1ac907;
+    color: #fff;
+    border: 3px solid #ffde03;
 }
 
 .save-btn {
-    background: #4caf50;
-    color: white;
-}
-
-.save-btn:hover {
-    background: #388e3c;
+    background: #28a745;
+    color: #fff;
+    border: 3px solid #218838;
 }
 
 .cancel-btn {
-    background: #ff9800;
-    color: white;
+    background: #dc3545;
+    color: #fff;
+    border: 3px solid #c82333;
 }
 
-.cancel-btn:hover {
-    background: #e68900;
+.profile-btn:hover {
+    transform: scale(1.05);
+}
+
+/* --- FAVORITE CHARACTERS & BATTLE HISTORY --- */
+.section-title {
+    font-size: 1.8rem;
+    color: #222;
+    text-shadow: 3px 3px #ffde03, 5px 5px #d32f2f;
+    margin-top: 20px;
+}
+
+/* --- LIST STYLES --- */
+.favorites-list, .battle-history {
+    list-style-type: none;
+    padding: 0;
+}
+
+.favorite-item, .battle-item {
+    background: rgba(255, 255, 255, 0.2);
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.2rem;
+}
+
+.battle-result {
+    font-weight: bold;
+    color: #ffcc00;
+}
+
+.empty-text {
+    font-size: 1.2rem;
+    color: #ffde03;
+    margin-top: 10px;
 }

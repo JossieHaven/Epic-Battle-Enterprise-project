@@ -100,12 +100,9 @@ const BattleArena = () => {
         </div>
       </div>
       {/* Button to Generate Prompt */}
-      <button
-        onClick={handleGeneratePrompt}
-        className="mt-6 px-6 py-3 bg-yellow-500 text-black rounded-lg font-bold text-xl"
-      >
-        Generate AI Battle Prompt
-      </button>
+      <button onClick={handleGeneratePrompt} className="generate-battle-btn">
+  Generate AI Battle Prompt
+</button>
 
       {/* Display AI generated prompt */}
       
