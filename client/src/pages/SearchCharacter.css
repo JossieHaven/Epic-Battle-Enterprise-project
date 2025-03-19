@@ -17,7 +17,6 @@
   .character-card2:hover {
     transform: scale(1.05); 
     background: linear-gradient(135deg, #fdcf03, #f87804)
-
   }
   
   .character-img2 {
