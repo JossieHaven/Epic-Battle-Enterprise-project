@@ -22,9 +22,7 @@ const typeDefs = gql`
     power: String
     combat: String
     image: String
-    
   }
-
 
   input CharacterInput {
     characterId: String!
@@ -81,6 +79,7 @@ const typeDefs = gql`
       combat: String
     ): Character
     removeCharacter(characterId: String!): User
+    generateBattlePrompt(hero: String!, villain: String!): String!
   }
 `;
 
