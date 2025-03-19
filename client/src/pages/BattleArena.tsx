@@ -1,11 +1,19 @@
+import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+import { GENERATE_BATTLE_PROMPT } from "../utils/mutations";
 import "./BattleArena.css"; // Importing external CSS file
+
 
 const BattleArena = () => {
   const navigate = useNavigate();
   const [hero, setHero] = useState<any>(null);
   const [villain, setVillain] = useState<any>(null);
+
+  const [generatePrompt, { data: aiData, loading, error }] = useMutation(
+    GENERATE_BATTLE_PROMPT
+  );
 
   useEffect(() => {
     // Retrieve hero and villain from localStorage
@@ -30,6 +38,19 @@ const BattleArena = () => {
       </div>
     );
   }
+
+  const handleGeneratePrompt = async () => {
+    if (hero && villain) {
+      await generatePrompt({
+        variables: { hero: hero.name, villain: villain.name },
+      });
+    }
+  };
+
+  if (loading) return <p>Loading AI response</p>;
+  if (error) return <p>Error generating prompt: {error.message}</p>;
+
+  // console.log(aiData.generateBattlePrompt);
 
   return (
     <div className="battle-container">
@@ -72,6 +93,20 @@ const BattleArena = () => {
           </div>
         </div>
       </div>
+      {/* Button to Generate Prompt */}
+      <button
+        onClick={handleGeneratePrompt}
+        className="mt-6 px-6 py-3 bg-yellow-500 text-black rounded-lg font-bold text-xl"
+      >
+        Generate AI Battle Prompt
+      </button>
+
+      {/* Display AI generated prompt */}
+      {aiData && (
+        <div className="mt-4 p-4 bg-white text-black rounded-lg">
+          {aiData.generateBattlePrompt}
+        </div>
+      )}
 
       <button onClick={() => navigate("/search")} className="btn">
         Choose Again

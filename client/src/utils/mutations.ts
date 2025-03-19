@@ -39,7 +39,6 @@ export const SAVE_CHARACTER = gql`
     $durability: String
     $power: String
     $combat: String
-
   ) {
     saveCharacter(
       characterId: $characterId
@@ -54,7 +53,6 @@ export const SAVE_CHARACTER = gql`
       durability: $durability
       power: $power
       combat: $combat
-
     ) {
       CharacterCount
       email
@@ -89,5 +87,11 @@ export const REMOVE_CHARACTER = gql`
         name
       }
     }
+  }
+`;
+
+export const GENERATE_BATTLE_PROMPT = gql`
+  mutation generateBattlePrompt($hero: String!, $villain: String!) {
+    generateBattlePrompt(hero: $hero, villain: $villain)
   }
 `;
