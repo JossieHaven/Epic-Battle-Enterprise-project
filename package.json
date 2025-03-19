@@ -51,6 +51,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "mongoose": "^8.12.1",
+    "openai": "^4.87.4",
     "styled-components": "^6.1.15"
   }
 }

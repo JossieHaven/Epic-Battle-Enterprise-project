@@ -59,7 +59,7 @@ const BattleArena = () => {
 
         {/* VS Section */}
         <h1 className="text-5xl font-bold">VS</h1>
-
+        
         {/* Villain Section */}
         <div className="text-center">
           <h2 className="text-2xl font-bold">{villain.name}</h2>
