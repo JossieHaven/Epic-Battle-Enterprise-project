@@ -12,6 +12,7 @@ import type { Character } from "../models/Character.js";
 import SearchForm from "../components/SearchForm.js"; // Import SearchForm component
 import { SEARCH_CHARACTER } from "../utils/queries.js";
 import styled from "styled-components";
+import "./SearchCharacter.css"
 
 const SearchCharacters = () => {
   const [searchedCharacters, setSearchedCharacters] = useState<Character[]>([]);
@@ -117,31 +118,31 @@ const SearchCharacters = () => {
               className="mb-4"
               key={character.characterId}
             >
-              <Card className="character-card">
+              <Card className="character-card2">
                 {character.image && (
                   <Card.Img
                     src={character.image}
                     alt={`The cover for ${character.name}`}
                     variant="top"
-                    className="character-img"
+                    className="character-img2"
                   />
                 )}
                 <Card.Body className="character-info">
-                  <Card.Title>{character.name}</Card.Title>
-                  <p className="small">Publisher: {character.publisher}</p>
-                  <p className="small">Alignment: {character.alignment}</p>
+                  <Card.Title><p className="char-name">🎭{character.name}</p></Card.Title>
+                  <p className="small">📝 Publisher: {character.publisher}</p>
+                  <p className="small">☯️ Alignment: {character.alignment}</p>
                   <p className="small">
-                    Intelligence: {character.intelligence ?? "N/A"}
+                  🧠 Intelligence: {character.intelligence ?? "N/A"}
                   </p>
                   <p className="small">
-                    Strength: {character.strength ?? "N/A"}
+                  💪 Strength: {character.strength ?? "N/A"}
                   </p>
-                  <p className="small">Speed: {character.speed ?? "N/A"}</p>
+                  <p className="small">⚡Speed: {character.speed ?? "N/A"}</p>
                   <p className="small">
-                    Durability: {character.durability ?? "N/A"}
+                  🛡️ Durability: {character.durability ?? "N/A"}
                   </p>
-                  <p className="small">Power: {character.power ?? "N/A"}</p>
-                  <p className="small">Combat: {character.combat ?? "N/A"}</p>
+                  <p className="small">🔥 Power: {character.power ?? "N/A"}</p>
+                  <p className="small">⚔️ Combat: {character.combat ?? "N/A"}</p>
 
                   {Auth.loggedIn() && (
                     <>
@@ -188,7 +189,7 @@ const StyledHeader = styled.div`
   text-align: center;
   color: white;
   padding: 5rem 0;
-  background: linear-gradient(135deg,rgb(248, 122, 4),rgb(253, 165, 3),rgb(251, 255, 39));
+  background: linear-gradient(135deg,rgb(248, 122, 4),rgb(253, 207, 3),rgb(251, 255, 39));
   border-radius: 15px;
   
   h1 {
