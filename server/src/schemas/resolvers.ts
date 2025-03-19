@@ -1,6 +1,10 @@
 import { User } from "../models/index.js";
 import { signToken, AuthenticationError } from "../utils/auth.js";
 
+import OpenAi from "openai";
+
+const openai = new OpenAi({ apiKey: "OPENAI_API_KEY" });
+
 // Define types for the arguments
 interface AddUserArgs {
   userData: {
@@ -35,6 +39,21 @@ interface CharacterArgs {
     image: string;
   };
 }
+
+const generateAIResponse = async (inputText: any) => {
+  try {
+    const response = await openai.completions.create({
+      model: "text-davinci-003",
+      prompt: inputText,
+      max_tokens: 150,
+    });
+
+    return response.choices[0].text;
+  } catch (error) {
+    console.error("Error generating AI response: ", error);
+    throw new Error("Failed to generate AI response");
+  }
+};
 
 interface RemoveCharacterArgs {
   characterId: string;
@@ -162,6 +181,14 @@ const resolvers = {
       throw new AuthenticationError(
         "You need to be logged in to remove a character!"
       );
+    },
+
+    async generateBattlePrompt(_: any, { hero, villain }: any) {
+      const inputText = `Generate a story where ${hero} and ${villain} fight each other. 
+      In this story, make ${hero} the hero and ${villain} the villain. Also, consider these 
+      power stats to help guide the simulation? Also keep it to 2 paragraphs, and 
+      at the end, say who the victor was in a single word.`;
+      return await generateAIResponse(inputText);
     },
   },
 };

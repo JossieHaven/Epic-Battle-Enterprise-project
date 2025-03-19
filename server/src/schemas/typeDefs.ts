@@ -79,6 +79,7 @@ const typeDefs = gql`
       combat: String
     ): Character
     removeCharacter(characterId: String!): User
+    generateBattlePrompt(hero: String!, villain: String!): String!
   }
 `;
 

@@ -1,26 +1,28 @@
+import { useMutation } from "@apollo/client";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { GENERATE_BATTLE_PROMPT } from "../utils/mutations";
 
 const BattleArena = () => {
   const navigate = useNavigate();
   const [hero, setHero] = useState<any>(null);
   const [villain, setVillain] = useState<any>(null);
-  
+  const [generatePrompt, { data: aiData, loading, error }] = useMutation(
+    GENERATE_BATTLE_PROMPT
+  );
 
-    useEffect(() => {
-      // Retrieve hero and villain from localStorage
-      const storedHero = localStorage.getItem("hero");
-      const storedVillain = localStorage.getItem("villain");
-    
-      if (storedHero) {
-        setHero(JSON.parse(storedHero));
-      }
-      if (storedVillain) {
-        setVillain(JSON.parse(storedVillain));
-      }
-    }, []);
+  useEffect(() => {
+    // Retrieve hero and villain from localStorage
+    const storedHero = localStorage.getItem("hero");
+    const storedVillain = localStorage.getItem("villain");
 
+    if (storedHero) {
+      setHero(JSON.parse(storedHero));
+    }
+    if (storedVillain) {
+      setVillain(JSON.parse(storedVillain));
+    }
+  }, []);
 
   if (!hero || !villain) {
     return (
@@ -35,6 +37,19 @@ const BattleArena = () => {
       </div>
     );
   }
+
+  const handleGeneratePrompt = async () => {
+    if (hero && villain) {
+      await generatePrompt({
+        variables: { hero: hero.name, villain: villain.name },
+      });
+    }
+  };
+
+  if (loading) return <p>Loading AI response</p>;
+  if (error) return <p>Error generating prompt: {error.message}</p>;
+
+  // console.log(aiData.generateBattlePrompt);
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-900 text-white">
@@ -76,6 +91,20 @@ const BattleArena = () => {
           <p>Combat: {villain.combat}</p>
         </div>
       </div>
+      {/* Button to Generate Prompt */}
+      <button
+        onClick={handleGeneratePrompt}
+        className="mt-6 px-6 py-3 bg-yellow-500 text-black rounded-lg font-bold text-xl"
+      >
+        Generate AI Battle Prompt
+      </button>
+
+      {/* Display AI generated prompt */}
+      {aiData && (
+        <div className="mt-4 p-4 bg-white text-black rounded-lg">
+          {aiData.generateBattlePrompt}
+        </div>
+      )}
 
       <button
         onClick={() => navigate("/search")}
