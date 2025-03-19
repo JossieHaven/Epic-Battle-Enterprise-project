@@ -1,26 +1,26 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SEARCH_CHARACTER_BY_ID } from "../utils/queries";
-import { useLazyQuery } from "@apollo/client/react/hooks/useLazyQuery";
+
 
 
 const BattleArena = () => {
   const navigate = useNavigate();
   const [hero, setHero] = useState<any>(null);
   const [villain, setVillain] = useState<any>(null);
-    const [searchCharacterById, { loading, error, data }] = useLazyQuery(SEARCH_CHARACTER_BY_ID);
   
 
-  useEffect(() => {
-    // Retrieve hero and villain from localStorage
-    const storedHero = localStorage.getItem("hero");
-    const storedVillain = localStorage.getItem("villain");
-
-    if (storedHero && storedVillain) {
-      setHero(JSON.parse(storedHero));
-      setVillain(JSON.parse(storedVillain));
-    }
-  }, []);
+    useEffect(() => {
+      // Retrieve hero and villain from localStorage
+      const storedHero = localStorage.getItem("hero");
+      const storedVillain = localStorage.getItem("villain");
+    
+      if (storedHero) {
+        setHero(JSON.parse(storedHero));
+      }
+      if (storedVillain) {
+        setVillain(JSON.parse(storedVillain));
+      }
+    }, []);
 
   if (!hero || !villain) {
     return (
