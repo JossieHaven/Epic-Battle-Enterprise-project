@@ -1,52 +1,84 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
-import './UserProfile.css';
+import { updateUserProfile } from "../services/api";
+
+interface User {
+    id: string;
+    username: string;
+    email: string;
+}
 
 function UserProfile() {
     const auth = useContext(AuthContext);
-    const navigate = useNavigate();
-    const [favorites, setFavorites] = useState<string[]>([]);
-    const [battles, setBattles] = useState<{ opponent: string; result: string }[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState<User | null>(null);
+    const [favorites] = useState<string[]>([]);
+    const [battles] = useState<any[]>([]);
+    const [editMode, setEditMode] = useState(false);
+    const [updatedUsername, setUpdatedUsername] = useState("");
+    const [updatedEmail, setUpdatedEmail] = useState("");
 
     // useEffect(() => {
-    //     if (auth === undefined) return; // Prevent running before auth is defined
-        
     //     if (!auth?.user) {
-    //         navigate("/profile"); // Redirect only if there's no user
-    //         return;
+    //         navigate("/login");
+    //     } else {
+    //         const loadUserData = async () => {
+    //             try {
+    //                 const userData = await fetchUserProfile(auth.user.id);
+    //                 setUser(userData);
+    //                 setUpdatedUsername(userData.username);
+    //                 setUpdatedEmail(userData.email);
+
+    //                 const favoriteCharacters = await fetchUserFavorites(auth.user.id);
+    //                 setFavorites(favoriteCharacters);
+
+    //                 const battleHistory = await fetchUserBattles(auth.user.id);
+    //                 setBattles(battleHistory);
+    //             } catch (err) {
+    //                 console.error("Failed to load user data", err);
+    //             }
+    //         };
+
+    //         loadUserData();
     //     }
+    // }, [auth, navigate]);
 
-    //     // Simulated user data (Replace with real API calls if needed)
-    //     setFavorites(["Superman", "Batman"]);
-    //     setBattles([
-    //         { opponent: "Joker", result: "Win" },
-    //         { opponent: "Thanos", result: "Loss" }
-    //     ]);
-
-    //     setLoading(false);
-    // }, [auth?.user, navigate]);
-
-    const handleLogout = () => {
-        localStorage.removeItem("id_token"); // Clear token
-        navigate("/userprofile"); // Redirect to login page
-        window.location.reload(); // Refresh to reset state
+    const handleUpdateProfile = async () => {
+        try {
+            await updateUserProfile(auth?.user?.id || "", { username: updatedUsername, email: updatedEmail });
+            setUser((prevUser) => prevUser ? { ...prevUser, username: updatedUsername, email: updatedEmail } : null);
+            setEditMode(false);
+        } catch (err) {
+            console.error("Failed to update profile", err);
+        }
     };
 
-    if (loading) return <p>Loading...</p>;
-
-    if (!auth?.user) return <p>No user found. Please log in.</p>;
+    // if (!auth?.user) return null;
 
     return (
         <div className="profile-container">
-            <h2>Welcome, {auth.user?.username ?? "Guest"}</h2>
+            <h2>Welcome, {user?.username}</h2>
 
-            <button className="logout-btn" onClick={handleLogout}>Logout</button>
+            {editMode ? (
+                <div className="edit-profile">
+                    <label>Username:</label>
+                    <input type="text" value={updatedUsername} onChange={(e) => setUpdatedUsername(e.target.value)} />
+                    
+                    <label>Email:</label>
+                    <input type="email" value={updatedEmail} onChange={(e) => setUpdatedEmail(e.target.value)} />
+
+                    <button onClick={handleUpdateProfile}>Save</button>
+                    <button onClick={() => setEditMode(false)}>Cancel</button>
+                </div>
+            ) : (
+                <div className="profile-info">
+                    <p><strong>Email:</strong> {user?.email}</p>
+                    <button onClick={() => setEditMode(true)}>Edit Profile</button>
+                </div>
+            )}
 
             <h3>Favorite Characters</h3>
             {favorites.length > 0 ? (
-                <ul>
+                <ul className="favorites-list">
                     {favorites.map((char, index) => <li key={index}>{char}</li>)}
                 </ul>
             ) : (
@@ -55,7 +87,7 @@ function UserProfile() {
 
             <h3>Battle History</h3>
             {battles.length > 0 ? (
-                <ul>
+                <ul className="battle-history">
                     {battles.map((battle, index) => (
                         <li key={index}>
                             Fought against {battle.opponent} - <strong>{battle.result}</strong>
@@ -67,6 +99,7 @@ function UserProfile() {
             )}
         </div>
     );
+    
 }
 
 export default UserProfile;
