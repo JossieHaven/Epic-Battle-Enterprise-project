@@ -28,8 +28,6 @@ export const createUser = async (req: Request, res: Response) => {
   return res.json({ token, user });
 };
 
-// login a user, sign a token, and send it back (to client/src/components/LoginForm.js)
-// {body} is destructured req.body
 export const login = async (req: Request, res: Response) => {
   const user = await User.findOne({ $or: [{ username: req.body.username }, { email: req.body.email }] });
   if (!user) {
