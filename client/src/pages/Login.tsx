@@ -25,50 +25,57 @@ const Login = () => {
 
       if (data?.login?.token) {
         AuthService.login(data.login.token);
-        navigate("/"); // Redirect after successful login
+        navigate("/profile"); // Redirect to Profile after login
       }
     } catch (err) {
       console.error("Login Error:", err);
+      setShowAlert(true); // Show error alert on failed login
     }
   };
 
   return (
-    <div className="login-container">
-      <div className="login-box">
-        <h2>Login to Your Account</h2>
+    <div className="login-page"> 
+      <div className="login-container"> 
+        <h2 className="login-title">Login to Your Account</h2> 
 
-        <Form noValidate onSubmit={handleFormSubmit}>
-          <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant="danger">
-            Something went wrong with your login credentials!
-          </Alert>
+        <Form noValidate onSubmit={handleFormSubmit} className="login-form">
+          {showAlert && (
+            <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant="danger">
+              Something went wrong with your login credentials!
+            </Alert>
+          )}
 
-          <Form.Group className="mb-3">
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter your email"
-              name="email"
-              onChange={handleInputChange}
-              value={formData.email}
-              required
-            />
-            <Form.Control.Feedback type="invalid">Email is required!</Form.Control.Feedback>
+          <Form.Group className="form-group">
+            <Form.Label className="form-label">Email</Form.Label>
+            <div className="input-spacing"> {/* Adds spacing between label and input */}
+              <Form.Control
+                type="text"
+                placeholder="Enter your email"
+                name="email"
+                onChange={handleInputChange}
+                value={formData.email}
+                required
+                className="form-control"
+              />
+            </div>
           </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              placeholder="Enter your password"
-              name="password"
-              onChange={handleInputChange}
-              value={formData.password}
-              required
-            />
-            <Form.Control.Feedback type="invalid">Password is required!</Form.Control.Feedback>
+          <Form.Group className="form-group">
+            <Form.Label className="form-label">Password</Form.Label>
+            <div className="input-spacing"> {/* Adds spacing between label and input */}
+              <Form.Control
+                type="password"
+                placeholder="Enter your password"
+                name="password"
+                onChange={handleInputChange}
+                value={formData.password}
+                required
+                className="form-control"
+              />
+            </div>
           </Form.Group>
 
-          <Button disabled={!(formData.email && formData.password)} type="submit">
+          <Button className="login-btn" disabled={!(formData.email && formData.password)} type="submit">
             LOGIN
           </Button>
         </Form>
