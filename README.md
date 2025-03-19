@@ -22,6 +22,8 @@ Frontend (React + TypeScript)
 React
 TypeScript
 Axios
+
+
 Backend (Node.js + Express + MongoDB)
 Node.js
 Express

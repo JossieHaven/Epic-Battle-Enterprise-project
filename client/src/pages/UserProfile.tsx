@@ -10,27 +10,27 @@ function UserProfile() {
     const [battles, setBattles] = useState<{ opponent: string; result: string }[]>([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
-        if (auth === undefined) return; // Prevent running before auth is defined
+    // useEffect(() => {
+    //     if (auth === undefined) return; // Prevent running before auth is defined
         
-        if (!auth?.user) {
-            navigate("/login"); // Redirect only if there's no user
-            return;
-        }
+    //     if (!auth?.user) {
+    //         navigate("/profile"); // Redirect only if there's no user
+    //         return;
+    //     }
 
-        // Simulated user data (Replace with real API calls if needed)
-        setFavorites(["Superman", "Batman"]);
-        setBattles([
-            { opponent: "Joker", result: "Win" },
-            { opponent: "Thanos", result: "Loss" }
-        ]);
+    //     // Simulated user data (Replace with real API calls if needed)
+    //     setFavorites(["Superman", "Batman"]);
+    //     setBattles([
+    //         { opponent: "Joker", result: "Win" },
+    //         { opponent: "Thanos", result: "Loss" }
+    //     ]);
 
-        setLoading(false);
-    }, [auth?.user, navigate]);
+    //     setLoading(false);
+    // }, [auth?.user, navigate]);
 
     const handleLogout = () => {
         localStorage.removeItem("id_token"); // Clear token
-        navigate("/login"); // Redirect to login page
+        navigate("/userprofile"); // Redirect to login page
         window.location.reload(); // Refresh to reset state
     };
 

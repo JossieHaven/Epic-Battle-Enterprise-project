@@ -42,22 +42,3 @@ export const SEARCH_CHARACTER = gql`
     }
   }
 `;
-
-export const SEARCH_CHARACTER_BY_ID = gql`
-  query SearchCharacterById($id: String!) {
-    searchCharacterById(id: $id) {
-      characterId
-      name
-      fullName
-      publisher
-      alignment
-      intelligence
-      strength
-      speed
-      durability
-      combat
-      power
-      image
-    }
-  }
-`;

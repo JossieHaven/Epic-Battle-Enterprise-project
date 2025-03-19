@@ -75,7 +75,13 @@ const BattleArena = () => {
         {/* Battle Narration Section */}
         <div className="battle-narration">
           <h2 className="vs-text">⚡Battle Begins!⚡</h2>
-          <p className="narration-text">The battle story will unfold here with OpenAI...Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. </p>
+          <p className="narration-text"> 
+          {aiData && (
+        <div className="mt-4 p-4 bg-white text-black rounded-lg">
+          {aiData.generateBattlePrompt}
+        </div>
+      )}
+          </p>
         </div>
 
         {/* Villain Section */}
@@ -102,11 +108,7 @@ const BattleArena = () => {
       </button>
 
       {/* Display AI generated prompt */}
-      {aiData && (
-        <div className="mt-4 p-4 bg-white text-black rounded-lg">
-          {aiData.generateBattlePrompt}
-        </div>
-      )}
+      
 
       <button onClick={() => navigate("/search")} className="btn">
         Play Again
