@@ -11,6 +11,7 @@ import {
 import type { Character } from "../models/Character.js";
 import SearchForm from "../components/SearchForm.js"; // Import SearchForm component
 import { SEARCH_CHARACTER } from "../utils/queries.js";
+import styled from "styled-components";
 
 const SearchCharacters = () => {
   const [searchedCharacters, setSearchedCharacters] = useState<Character[]>([]);
@@ -87,9 +88,9 @@ const SearchCharacters = () => {
 
   return (
     <>
-      <div className="text-light bg-dark p-5">
+      <StyledHeader>
         <Container>
-          <h1>Search for Characters!</h1>
+          <h1> Hero | Villain </h1>
 
           <SearchForm
             value={searchInput}
@@ -98,14 +99,15 @@ const SearchCharacters = () => {
             isLoading={loading}
           />
         </Container>
-      </div>
+      </StyledHeader>
 
       <Container>
-        <h2 className="pt-5">
+        <StyledResultsText>
           {searchedCharacters.length
             ? `Viewing ${searchedCharacters.length} results:`
-            : "Search for a character to begin"}
-        </h2>
+            : "Select a hero and a villain for your battle"}
+        </StyledResultsText>
+        
         <Row>
           {searchedCharacters.map((character) => (
             <Col
@@ -180,5 +182,43 @@ const SearchCharacters = () => {
     </>
   );
 };
+
+// Styled components for better UI
+const StyledHeader = styled.div`
+  text-align: center;
+  color: white;
+  padding: 5rem 0;
+  background: linear-gradient(135deg,rgb(255, 255, 255),rgb(141, 141, 141),rgb(5, 5, 5));
+  border-radius: 15px;
+  
+  h1 {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
+    margin-top: -20px; /* Moves the text closer to the top */
+    padding-bottom: 35px;
+  }
+`;
+
+const StyledResultsText = styled.h2`
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 6px; /* Increased spacing for a bolder look */
+  padding-top: 3rem;
+  margin-bottom: 1.5rem;
+  background: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: 'Bangers', cursive;
+  
+  /* Glow Effect */
+  text-shadow: 
+    0 0 10px rgba(255, 255, 255, 0.6), 
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 30px rgba(240, 231, 228, 0.4); /* Extra soft outer glow */
+`;
 
 export default SearchCharacters;
