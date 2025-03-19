@@ -1,9 +1,7 @@
 import { User } from "../models/index.js";
 import { signToken, AuthenticationError } from "../utils/auth.js";
+import OpenAI from "openai";
 
-import OpenAi from "openai";
-
-const openai = new OpenAi({ apiKey: "OPENAI_API_KEY" });
 
 // Define types for the arguments
 interface AddUserArgs {
@@ -40,15 +38,18 @@ interface CharacterArgs {
   };
 }
 
-const generateAIResponse = async (inputText: any) => {
+const generateAIResponse = async (inputText: string) => {
   try {
-    const response = await openai.completions.create({
-      model: "text-davinci-003",
-      prompt: inputText,
-      max_tokens: 150,
+    const client = new OpenAI({
+      apiKey: process.env.OPENAI_API_KEY, // Ensure your .env file is properly loaded
     });
 
-    return response.choices[0].text;
+    const completion = await client.chat.completions.create({
+      model: "gpt-4o",
+      messages: [{ role: "user", content: inputText }],
+    });
+
+    return completion.choices[0].message.content; // Return the generated response
   } catch (error) {
     console.error("Error generating AI response: ", error);
     throw new Error("Failed to generate AI response");
@@ -184,10 +185,15 @@ const resolvers = {
     },
 
     async generateBattlePrompt(_: any, { hero, villain }: any) {
-      const inputText = `Generate a story where ${hero} and ${villain} fight each other. 
-      In this story, make ${hero} the hero and ${villain} the villain. Also, consider these 
-      power stats to help guide the simulation? Also keep it to 2 paragraphs, and 
-      at the end, say who the victor was in a single word.`;
+      const inputText = `
+      Write a four-paragraph battle story where ${hero} (Hero) and ${villain} (Villain) fight. Use their power stats to guide their attacks, defenses, and strategies:
+
+      ${hero}'s stats: Intelligence - ${hero.intelligence}, Strength - ${hero.strength}, Speed - ${hero.speed}, Durability - ${hero.durability}, Power - ${hero.power}, Combat - ${hero.combat}.
+      ${villain}'s stats: Intelligence - ${villain.intelligence}, Strength - ${villain.strength}, Speed - ${villain.speed}, Durability - ${villain.durability}, Power - ${villain.power}, Combat - ${villain.combat}.
+      Describe their battle dynamically, showcasing their strengths and weaknesses. Determine the winner based on their stats and display the result at the end as follows:
+      Winner: [Hero/Villain]
+      Loser: [Hero/Villain].
+      `;
       return await generateAIResponse(inputText);
     },
   },
