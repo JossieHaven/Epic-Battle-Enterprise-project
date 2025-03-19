@@ -63,12 +63,12 @@ const BattleArena = () => {
           <h2 className="character-name">{hero.name}</h2>
           <img src={hero.image} alt={hero.name} className="character-image" />
           <div className="stats">
-            <p>Power: {hero.power}</p>
-            <p>Intelligence: {hero.intelligence}</p>
-            <p>Strength: {hero.strength}</p>
-            <p>Speed: {hero.speed}</p>
-            <p>Durability: {hero.durability}</p>
-            <p>Combat: {hero.combat}</p>
+            <p>🔥 Power: {hero.power}</p>
+            <p>🧠 Intelligence: {hero.intelligence}</p>
+            <p>💪 Strength: {hero.strength}</p>
+            <p>⚡ Speed: {hero.speed}</p>
+            <p>🛡️ Durability: {hero.durability}</p>
+            <p>⚔️ Combat: {hero.combat}</p>
           </div>
         </div>
 
@@ -84,12 +84,12 @@ const BattleArena = () => {
           <h2 className="character-name">{villain.name}</h2>
           <img src={villain.image} alt={villain.name} className="character-image" />
           <div className="stats">
-            <p>Power: {villain.power}</p>
-            <p>Intelligence: {villain.intelligence}</p>
-            <p>Strength: {villain.strength}</p>
-            <p>Speed: {villain.speed}</p>
-            <p>Durability: {villain.durability}</p>
-            <p>Combat: {villain.combat}</p>
+            <p>🔥 Power: {villain.power}</p>
+            <p>🧠 Intelligence: {villain.intelligence}</p>
+            <p>💪 Strength: {villain.strength}</p>
+            <p>⚡ Speed: {villain.speed}</p>
+            <p>🛡️ Durability: {villain.durability}</p>
+            <p>⚔️ Combat: {villain.combat}</p>
           </div>
         </div>
       </div>
@@ -109,7 +109,7 @@ const BattleArena = () => {
       )}
 
       <button onClick={() => navigate("/search")} className="btn">
-        Choose Again
+        Play Again
       </button>
     </div>
   );
