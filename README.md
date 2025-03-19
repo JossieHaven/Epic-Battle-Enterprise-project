@@ -1,90 +1,67 @@
 # Epic-Battle-Enterprise
 
-🚀 Elevator Pitch
 
-Imagine a world where heroes and villains clash in epic battles, and you control the outcome! The Superhero vs. Villain Battle Simulator is a web-based application that lets users search for characters, compare their stats, and simulate battles using AI-powered logic. Whether you’re a comic book fan or a curious strategist, this app provides an engaging, data-driven battle experience like never before!
-
-🔥 Features
-
-✅ Search & Explore: Find superheroes and villains using real-time data.
-
-✅ Character Stats: View power levels, abilities, and biographies.
-
-✅ Battle Simulator: Pit two characters against each other and see AI-driven battle results.
-
-✅ Dynamic Matchups: Choose different battle environments and conditions.
-
-✅ Saved Results: Store past battles and compare different scenarios.
+## Description
+This project is a full-stack MERN (MongoDB, Express.js, React, Node.js) single-page application designed to provide a seamless user experience while solving a real-world problem. The application utilizes GraphQL for efficient data handling, JWT authentication for security, and follows best practices in software development. The project showcases collaborative development skills and a scalable architecture suitable for real-world deployment.
 
 
-🛠️ Technologies Used
-Frontend (React + TypeScript)
-React
-TypeScript
-Axios
+## Badge
+None.
 
 
-Backend (Node.js + Express + MongoDB)
-Node.js
-Express
-MongoDB (Mongoose)
-OpenAI API (for AI battle narration)
-Superhero API (for character stats)
-dotenv
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technology](#technology)
+- [License](#license)
+- [Contributing](#contributing)
+- [Test Instructions](#testinstructions)
+- [Questions](#questions)
+   
 
-🔧 Setup Instructions
-
-1️⃣ Clone the Repository
-bash
-Copy code
-git clone https://github.com/your-username/superhero-vs-villain.git
-cd superhero-vs-villain
-
-2️⃣ Install Dependencies
-Backend
-bash
-Copy code
-cd backend
+## Installation 
+1. Clone the Repository:
+```
+git clone <respository-SSH key>
+cd epic-battle-enterprise
+```
+2. Navigate to the project directory:
+```
+cd epic-battle-enterprise
+```
+3. Install the necessary ependencies:
+```
 npm install
-Frontend
-bash
-Copy code
-cd frontend
-npm install
+```
 
-3️⃣ Set Up Environment Variables
-Create a .env file in the backend directory with:
-ini
-Copy code
+4. Set Up Environment Variables:
+```
 MONGO_URI=mongodb://localhost:27017/superhero_battle
+
+JWT_SECRET_KEY = yourSecretKey
+
 CHARACTER_API_KEY=your_superhero_api_key
+
 OPENAI_API_KEY=your_openai_api_key
+```
 
-4️⃣ Start the Application
-Start MongoDB
-bash
-Copy code
-mongod --dbpath /data/db
+5. Start the development server:
 
-Start Backend
-bash
-Copy code
-cd backend
-npm run dev
+```
+npm run build
+```
 
-Start Frontend
-bash
-Copy code
-cd frontend
-npm start
+6. Run the application locally:
 
-🌍 API Endpoints
+```
+npm run start:dev
+```
 
-Method	Endpoint	Description
-GET	/api/characters/:name	Search for a character by name
-POST	/api/battle/simulate	Generate an AI-powered battle
+Your project should now be running locally at ```http://localhost:3000``` (or a different port if specified).
 
-🖥️ Usage
+
+## Usage 
+Navigate to the ```http://localhost:3000``` or to the rendered site: {insert here when rendered}
 
 Search for a character (e.g., Superman or Joker).
 
@@ -94,17 +71,60 @@ Simulate a battle, choosing battle conditions (location, special abilities, etc.
 
 View AI-generated battle results, including dynamic storytelling.
 
-🎯 Future Enhancements
 
-✅ User Accounts to Save Battle History
-✅ Live Leaderboards for Most Popular Battles
-✅ Multiplayer Mode to Battle Against Friends
+## Technology
+### Frontend
 
-📝 License
-This project is open-source under the MIT License.
+React
 
-People who worked on this are:
+TypeScript
 
+Axios
+
+
+### Backend (Node.js + Express + MongoDB)
+
+Node.js
+
+Express
+
+MongoDB (Mongoose)
+
+OpenAI API 
+
+Superhero API 
+
+dotenv
+
+
+## License 
+This project is not licensed. 
+
+
+## Contributing 
+Contributions are welcome! To contribute:
+1. Fork the repository.
+
+2. Create a new branch:
+```
+git checkout -b feature/yourFeature
+```
+
+3. Commit your changes:
+```
+
+git commit -m "Add new feature"
+```
+
+4. Push to your branch:
+```
+
+git push origin feature/yourFeature
+```
+
+5. Open a pull request for review.
+
+## Project Contributors
 Nicole Barger - https://github.com/CodebyNicole-maker
 
 Jonathan Maxen - https://github.com/jgmaxen
@@ -114,3 +134,16 @@ Mike Norris - https://github.com/mnorris3
 Jenny Lalanne - https://github.com/je210506
 
 Jossie Haven - https://github.com/JossieHaven
+
+
+## Test Instructions 
+To test the application's functionality:
+
+-  Run Unit Tests
+```npm test```
+
+-  Manual Testing
+
+
+## Questions 
+If there's any additional questions, you can reach out to [Jenny](https://github.com/je210506), [Mike](https://github.com/mnorris3), [Jonathan](https://github.com/jgmaxen), [Jossie](https://github.com/JossieHaven), or [Nicole](https://github.com/CodebyNicole-maker) for more information on the project.
