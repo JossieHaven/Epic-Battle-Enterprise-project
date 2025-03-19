@@ -2,7 +2,6 @@ import { User } from "../models/index.js";
 import { signToken, AuthenticationError } from "../utils/auth.js";
 import OpenAI from "openai";
 
-
 // Define types for the arguments
 interface AddUserArgs {
   userData: {
@@ -191,8 +190,8 @@ const resolvers = {
       ${hero}'s stats: Intelligence - ${hero.intelligence}, Strength - ${hero.strength}, Speed - ${hero.speed}, Durability - ${hero.durability}, Power - ${hero.power}, Combat - ${hero.combat}.
       ${villain}'s stats: Intelligence - ${villain.intelligence}, Strength - ${villain.strength}, Speed - ${villain.speed}, Durability - ${villain.durability}, Power - ${villain.power}, Combat - ${villain.combat}.
       Describe their battle dynamically, showcasing their strengths and weaknesses. Determine the winner based on their stats and display the result at the end as follows:
-      Winner: [Hero/Villain]
-      Loser: [Hero/Villain].
+      
+      At the end, in one word, tell us who the winner is.
       `;
       return await generateAIResponse(inputText);
     },
