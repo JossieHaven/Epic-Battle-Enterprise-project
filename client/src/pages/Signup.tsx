@@ -9,6 +9,7 @@ import "./Signup.css"; // ✅ Import the new CSS
 const Signup = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({ username: "", email: "", password: "" });
+  // Removed unused username state
   const [showAlert, setShowAlert] = useState(false);
   const [addUser] = useMutation(ADD_USER);
 

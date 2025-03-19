@@ -1,32 +1,35 @@
 import { createContext, useState, useEffect, ReactNode } from "react";
 
+interface User {
+    id: string;
+    username: string;
+}
+
 interface AuthContextType {
-    user: { id: string; username: string } | null;
-    login: (userData: { id: string; username: string }) => void;
+    user: User | null;
+    login: (userData: User) => void;
     logout: () => void;
 }
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-    const [user, setUser] = useState<{ id: string; username: string } | null>(null);
+    const [user, setUser] = useState<User | null>(() => {
+        // Load user from localStorage when the app starts
+        const storedUser = localStorage.getItem("user");
+        return storedUser ? JSON.parse(storedUser) : null;
+    });
 
     useEffect(() => {
-        const storedUser = localStorage.getItem("user");
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
+        if (user) {
+            localStorage.setItem("user", JSON.stringify(user));
+        } else {
+            localStorage.removeItem("user");
         }
-    }, []);
+    }, [user]); // Only updates localStorage when `user` changes
 
-    const login = (userData: { id: string; username: string }) => {
-        setUser(userData);
-        localStorage.setItem("user", JSON.stringify(userData));
-    };
-
-    const logout = () => {
-        setUser(null);
-        localStorage.removeItem("user");
-    };
+    const login = (userData: User) => setUser(userData);
+    const logout = () => setUser(null);
 
     return (
         <AuthContext.Provider value={{ user, login, logout }}>
