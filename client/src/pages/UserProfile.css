@@ -1,0 +1,121 @@
+/* General Profile Container */
+.profile-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #1e1e2f;  /* Dark background for a sleek look */
+    color: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Profile Heading */
+.profile-container h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Logout Button */
+.logout-btn {
+    background: #ff4c4c;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    margin-top: 15px;
+}
+
+.logout-btn:hover {
+    background: #cc0000;
+}
+
+/* Section Titles */
+.profile-container h3 {
+    font-size: 22px;
+    margin-top: 20px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Lists */
+.profile-container ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10px;
+}
+
+.profile-container li {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    transition: 0.2s;
+}
+
+.profile-container li:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* No Data Text */
+.profile-container p {
+    font-size: 16px;
+    font-style: italic;
+    color: #bbb;
+}
+
+/* Edit Mode Input Fields */
+.edit-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.edit-container label {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.edit-container input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Save & Cancel Buttons */
+.edit-container .save-btn,
+.edit-container .cancel-btn {
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.save-btn {
+    background: #4caf50;
+    color: white;
+}
+
+.save-btn:hover {
+    background: #388e3c;
+}
+
+.cancel-btn {
+    background: #ff9800;
+    color: white;
+}
+
+.cancel-btn:hover {
+    background: #e68900;
+}

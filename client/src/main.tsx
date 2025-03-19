@@ -7,13 +7,15 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import SearchCharacters from "./pages/SearchCharacters";
-import BattleArena from "./pages/BattleArena"; 
-import Profile from "./pages/UserProfile"; // Ensure the Profile component exists in the ./pages directory
+
+import BattleArena from "./pages/BattleArena";
+
 import ErrorPage from "./pages/Error";
+import UserProfile from "./pages/UserProfile";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/*",
     element: <App />,
     errorElement: <ErrorPage />,
     children: [
@@ -22,7 +24,7 @@ const router = createBrowserRouter([
       { path: "signup", element: <Signup /> },
       { path: "search", element: <SearchCharacters /> },
       { path: "battle", element: <BattleArena /> },
-      { path: "profile", element: <Profile /> },
+      { path: "profile", element: <UserProfile /> },
     ],
   },
 ]);
