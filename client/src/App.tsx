@@ -1,5 +1,5 @@
 import './App.css';
-import { Outlet, Route, Routes } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -9,11 +9,6 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import Navbar from '../src/components/NavBar';
 import { CharacterProvider } from './context/CharacterContext';
-import LoginPage from "./pages/Login";
-import SignupPage from "./pages/Signup"; // Ensure the file exists at this path or update the path accordingly
-// import { AuthProvider } from './context/AuthContext'; // Removed as it is unused
-import { UserProfile } from './pages/UserProfile';
-
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -35,14 +30,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <CharacterProvider> {/* ✅ Wrap CharacterProvider to ensure context is available */}
+      <CharacterProvider>
         <Navbar />
         <Outlet />
-        <Routes>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignupPage />} />
-          <Route path="/profile" element={<UserProfile />} />
-        </Routes>
       </CharacterProvider>
     </ApolloProvider>
   );
