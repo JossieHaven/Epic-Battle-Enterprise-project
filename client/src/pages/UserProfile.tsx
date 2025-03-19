@@ -1,11 +1,11 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { updateUserProfile } from "../services/api";
+import "./UserProfile.css"; // ✅ Import the new CSS
 
 interface User {
     id: string;
     username: string;
-    email: string;
 }
 
 function UserProfile() {
@@ -15,91 +15,61 @@ function UserProfile() {
     const [battles] = useState<any[]>([]);
     const [editMode, setEditMode] = useState(false);
     const [updatedUsername, setUpdatedUsername] = useState("");
-    const [updatedEmail, setUpdatedEmail] = useState("");
-
-    // useEffect(() => {
-    //     if (!auth?.user) {
-    //         navigate("/login");
-    //     } else {
-    //         const loadUserData = async () => {
-    //             try {
-    //                 const userData = await fetchUserProfile(auth.user.id);
-    //                 setUser(userData);
-    //                 setUpdatedUsername(userData.username);
-    //                 setUpdatedEmail(userData.email);
-
-    //                 const favoriteCharacters = await fetchUserFavorites(auth.user.id);
-    //                 setFavorites(favoriteCharacters);
-
-    //                 const battleHistory = await fetchUserBattles(auth.user.id);
-    //                 setBattles(battleHistory);
-    //             } catch (err) {
-    //                 console.error("Failed to load user data", err);
-    //             }
-    //         };
-
-    //         loadUserData();
-    //     }
-    // }, [auth, navigate]);
 
     const handleUpdateProfile = async () => {
         try {
-            await updateUserProfile(auth?.user?.id || "", { username: updatedUsername, email: updatedEmail });
-            setUser((prevUser) => prevUser ? { ...prevUser, username: updatedUsername, email: updatedEmail } : null);
+            await updateUserProfile(auth?.user?.id || "", { username: updatedUsername });
+            setUser((prevUser) => prevUser ? { ...prevUser, username: updatedUsername } : null);
             setEditMode(false);
         } catch (err) {
             console.error("Failed to update profile", err);
         }
     };
 
-    // if (!auth?.user) return null;
-
     return (
         <div className="profile-container">
-            <h2>Welcome, {user?.username}</h2>
+            <h2 className="profile-title">Welcome, {user?.username || "Hero"}</h2>
 
             {editMode ? (
                 <div className="edit-profile">
-                    <label>Username:</label>
-                    <input type="text" value={updatedUsername} onChange={(e) => setUpdatedUsername(e.target.value)} />
-                    
-                    <label>Email:</label>
-                    <input type="email" value={updatedEmail} onChange={(e) => setUpdatedEmail(e.target.value)} />
+                    <label className="profile-label">Username:</label>
+                    <input type="text" className="profile-input" value={updatedUsername} onChange={(e) => setUpdatedUsername(e.target.value)} />
 
-                    <button onClick={handleUpdateProfile}>Save</button>
-                    <button onClick={() => setEditMode(false)}>Cancel</button>
+                    <div className="profile-button-group">
+                        <button className="profile-btn save-btn" onClick={handleUpdateProfile}>Save</button>
+                        <button className="profile-btn cancel-btn" onClick={() => setEditMode(false)}>Cancel</button>
+                    </div>
                 </div>
-            ) : (
+            ) 
+            : (
                 <div className="profile-info">
-                    <p><strong>Email:</strong> {user?.email}</p>
-                    <button onClick={() => setEditMode(true)}>Edit Profile</button>
+                    <button className="profile-btn edit-btn" onClick={() => setEditMode(true)}>Edit Profile</button>
                 </div>
             )}
 
-            <h3>Favorite Characters</h3>
+            <h3 className="section-title">Favorite Characters</h3>
             {favorites.length > 0 ? (
                 <ul className="favorites-list">
-                    {favorites.map((char, index) => <li key={index}>{char}</li>)}
+                    {favorites.map((char, index) => <li key={index} className="favorite-item">{char}</li>)}
                 </ul>
             ) : (
-                <p>No favorite characters yet.</p>
+                <p className="empty-text">No favorite characters yet.</p>
             )}
 
-            <h3>Battle History</h3>
+            <h3 className="section-title">Battle History</h3>
             {battles.length > 0 ? (
                 <ul className="battle-history">
                     {battles.map((battle, index) => (
-                        <li key={index}>
-                            Fought against {battle.opponent} - <strong>{battle.result}</strong>
+                        <li key={index} className="battle-item">
+                            Fought against <strong>{battle.opponent}</strong> - <span className="battle-result">{battle.result}</span>
                         </li>
                     ))}
                 </ul>
             ) : (
-                <p>No battles recorded yet.</p>
+                <p className="empty-text">No battles recorded yet.</p>
             )}
         </div>
     );
-    
 }
 
 export default UserProfile;
