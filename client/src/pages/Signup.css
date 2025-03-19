@@ -10,154 +10,93 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-
-/* --- SIGNUP CONTAINER --- */
-.signup-container {
-  max-width: 400px;
-  margin: 120px auto 50px; /* Prevents overlap with navbar */
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-  text-align: center;
-  font-family: "Bangers", cursive;
-  color: #fff;
+    justify-content: center;
+    padding: 20px;
 }
 
-/* --- TITLE --- */
+/* --- SIGNUP BOX (Matching Login) --- */
+.signup-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    font-family: "Bangers", cursive;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    text-align: center;
+}
+
+/* --- SIGNUP TITLE (Matching Login) --- */
 .signup-title {
-  font-size: 2rem;
-  color: #ffcc00;
-  text-shadow: 2px 2px #000;
+  font-size: 2.5rem;
+  font-family: "Bangers", cursive;
+  color: #e5e5e5 !important;
+  text-shadow: 3px 3px #080707 !important;
+  margin-bottom: 20px;
 }
 
-/* --- FORM STYLING --- */
+/* --- FORM STYLING (Same as Login) --- */
 .signup-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
 }
 
+/* --- LABELS (Same as Login) --- */
 .signup-form .form-label {
-  font-size: 1.2rem;
-  color: #ffcc00;
+    font-size: 1.4rem;
+    color: #ffcc00;
+    margin-bottom: 6px;
+    text-shadow: 3px 3px #000;
 }
 
+/* --- INPUT FIELDS (Same as Login) --- */
 .signup-form .form-control {
-  padding: 12px;
-  font-size: 1rem;
-  border: 2px solid #ffcc00;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: #fff;
+    padding: 14px;
+    font-size: 1.2rem;
+    border: 2px solid #ffcc00;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    margin-bottom: 15px;
 }
 
 .signup-form .form-control:focus {
-  border-color: #ff3300;
-  box-shadow: 0 0 10px #ff3300;
+    border-color: #ff3300;
+    box-shadow: 0 0 12px #ff3300;
 }
 
-/* --- SIGNUP BUTTON --- */
+/* --- SIGNUP BUTTON (Same as Login) --- */
 .signup-btn {
-  font-size: 1.2rem;
-  font-family: "Bangers", cursive;
-  background: #ff3300;
-  color: #fff;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+    font-size: 1.4rem;
+    font-family: "Bangers", cursive;
+    background: #850707 !important;
+    color: #fff; /* Ensures white text */
+    padding: 14px 22px;
+    border: 5px solid #e54947 !important;
+    border-radius: 50px !important;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 .signup-btn:hover {
-  background: #ffcc00;
-  color: #000;
-  transform: scale(1.05);
+    background: #ffcc00;
+    color: #fff !important; /* ✅ Fix: Keeps text white on hover */
+    transform: scale(1.07);
 }
-/* Background Styling */
-.signup-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #ff9800, #ff5722);
-    font-family: "Bangers", cursive; /* Superhero Comic Font */
-  }
-  
-  /* Signup Box */
-  .signup-box {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    padding: 2rem;
-    border-radius: 15px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    width: 350px;
-    text-align: center;
-  }
-  
-  /* Signup Header */
-  .signup-box h2 {
-    font-size: 2rem;
-    font-family: "Bangers", cursive;
-    color: #222;
-    text-shadow: 3px 3px 0px #ffde03, 5px 5px 0px #d32f2f;
-    margin-bottom: 1rem;
-  }
-  
-  /* Labels */
-  .signup-box label {
-    display: block;
-    font-size: 1rem;
-    font-weight: bold;
-    color: #ffde03;
-    text-shadow: 2px 2px 0px #d32f2f;
-    margin-bottom: 5px;
-  }
-  
-  /* Input Fields */
-  .signup-box input {
-    width: 100%;
-    padding: 10px;
-    font-size: 1rem;
-    border: 2px solid #ffde03;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.2);
-    color: #222;
-    font-weight: bold;
-  }
-  
-  .signup-box input::placeholder {
-    color: #666;
-  }
-  
-  /* Error Message */
-  .signup-box .invalid-feedback {
+
+/* --- ERROR MESSAGE (Hidden by Default) --- */
+.invalid-feedback {
+    display: none;
     color: #d32f2f;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: bold;
-    margin-top: 5px;
-  }
-  
-  /* Signup Button */
-  .signup-box button {
-    background: #222;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 1rem;
-    transition: 0.3s;
-  }
-  
-  .signup-box button:hover {
-    background: #ffde03;
-    color: #222;
-    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
-  }
-  
+    margin-top: 10px;
+}
+
+.show-error {
+    display: block;
+}

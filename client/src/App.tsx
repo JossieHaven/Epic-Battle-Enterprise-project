@@ -42,7 +42,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <CharacterProvider> {/* ✅ Wrap CharacterProvider to ensure context is available */}
+      <CharacterProvider>
         <Navbar />
         <Outlet />
         <Routes>
