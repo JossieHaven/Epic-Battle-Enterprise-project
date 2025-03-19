@@ -1,18 +1,27 @@
-.character-card {
-    border: 1px solid #343a40;
+.character-card2 {
+    width: 300px;
+    border: 5px solid #58b15d;
     border-radius: 10px;
     overflow: hidden; 
     background-color: #fff;
     transition: transform 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    background: white;
   }
   
-  .character-card:hover {
-    transform: scale(1.02); 
+  .character-card2:hover {
+    transform: scale(1.05); 
+    background: linear-gradient(135deg, #fdcf03, #f87804)
   }
   
-  .character-img {
+  .character-img2 {
     width: 100%;  
-    height: 250px; 
+    height: 300px; 
     object-fit: cover; 
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
@@ -20,14 +29,47 @@
   
   .character-info {
     padding: 15px;
+    text-align: left;
+  }
+
+  .character-info p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+  }  
+
+  .character-btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
   }
  
   .character-btn {
     width: 100%;
-    margin-top: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #f87804, #fdcf03);
+    color: white;
+    border: none;
+    transition:  0.3s ease-in-out;
   }
+
+  .character-btn:hover {
+    background: linear-gradient(135deg, #fdcf03, #f87804);
+  }
+
+  /* Text Styles for the cards */
+  .character-info p {
+  font-size: 0.9rem;
+  color: #b43838;
+  font-family: bangers, cursive;
+  letter-spacing: 1px;
+}
   
   .mb-4 {
     margin-bottom: 1.5rem !important;
   }
-  
