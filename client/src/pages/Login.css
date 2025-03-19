@@ -70,20 +70,19 @@ body {
 
 /* --- LOGIN BUTTON --- */
 .login-btn {
-    font-size: 1.4rem;
-    font-family: "Bangers", cursive;
-    background: #850707 !important;
-    color: #fff; /* Ensures white text */
-    padding: 14px 22px;
-    border: 5px solid #e54947;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+  font-size: 1.4rem;
+  font-family: "Bangers", cursive;
+  background: #850707 !important;
+  color: #fff;
+  padding: 14px 22px;
+  border: 5px solid #e54947 !important;
+  border-radius: 50px !important;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
 .login-btn:hover {
     background: #ffcc00;
-
     transform: scale(1.07);
 }
 
