@@ -7,7 +7,9 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import SearchCharacters from "./pages/SearchCharacters";
+
 import BattleArena from "./pages/BattleArena";
+
 import ErrorPage from "./pages/Error";
 import UserProfile from "./pages/UserProfile";
 
