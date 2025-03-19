@@ -22,9 +22,7 @@ const typeDefs = gql`
     power: String
     combat: String
     image: String
-    
   }
-
 
   input CharacterInput {
     characterId: String!

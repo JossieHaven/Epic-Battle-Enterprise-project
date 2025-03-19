@@ -9,7 +9,7 @@ import Login from "./pages/Login";
 import SearchCharacters from "./pages/SearchCharacters";
 import BattleArena from "./pages/BattleArena"; 
 
-import Profile from "./pages/UserProfile"; // Ensure the Profile component exists in the ./pages directory
+// import Profile from "./pages/UserProfile"; // Ensure the Profile component exists in the ./pages directory
 
 import ErrorPage from "./pages/Error";
 
