@@ -188,7 +188,7 @@ const StyledHeader = styled.div`
   text-align: center;
   color: white;
   padding: 5rem 0;
-  background: linear-gradient(135deg,rgb(255, 255, 255),rgb(141, 141, 141),rgb(5, 5, 5));
+  background: linear-gradient(135deg,rgb(248, 122, 4),rgb(253, 165, 3),rgb(251, 255, 39));
   border-radius: 15px;
   
   h1 {
