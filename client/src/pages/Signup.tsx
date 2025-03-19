@@ -4,7 +4,7 @@ import { ADD_USER } from "../utils/mutations";
 import AuthService from "../utils/auth";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
-import "./Signup.css"; // ✅ Import the new CSS
+import "./Signup.css";  
 
 const Signup = () => {
   const navigate = useNavigate();
@@ -32,25 +32,28 @@ const Signup = () => {
 
       if (data?.addUser?.token) {
         AuthService.login(data.addUser.token);
-        navigate("/"); // Redirect after signup
+        navigate("/");
       }
     } catch (err) {
       console.error("Signup Error:", err);
+      setShowAlert(true);
     }
   };
 
   return (
-    <div className="signup-container">
-      <div className="signup-box">
-        <h2>Create an Account</h2>
+    <div className="signup-box">
+      <h2 className="signup-title">Create an Account</h2> 
 
-        <Form noValidate onSubmit={handleSubmit}>
+      <Form className="signup-form" noValidate onSubmit={handleSubmit}>
+        {showAlert && (
           <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant="danger">
             Something went wrong with your signup!
           </Alert>
+        )}
 
-          <Form.Group className="mb-3">
-            <Form.Label>Username</Form.Label>
+        <Form.Group className="form-group">
+          <Form.Label className="form-label">Username</Form.Label>
+          <div className="input-spacing">
             <Form.Control
               type="text"
               placeholder="Enter your username"
@@ -58,12 +61,14 @@ const Signup = () => {
               onChange={handleChange}
               value={formData.username}
               required
+              className="form-control"
             />
-            <Form.Control.Feedback type="invalid">Username is required!</Form.Control.Feedback>
-          </Form.Group>
+          </div>
+        </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label>Email</Form.Label>
+        <Form.Group className="form-group">
+          <Form.Label className="form-label">Email</Form.Label>
+          <div className="input-spacing">
             <Form.Control
               type="email"
               placeholder="Enter your email"
@@ -71,12 +76,14 @@ const Signup = () => {
               onChange={handleChange}
               value={formData.email}
               required
+              className="form-control"
             />
-            <Form.Control.Feedback type="invalid">Email is required!</Form.Control.Feedback>
-          </Form.Group>
+          </div>
+        </Form.Group>
 
-          <Form.Group className="mb-3">
-            <Form.Label>Password</Form.Label>
+        <Form.Group className="form-group">
+          <Form.Label className="form-label">Password</Form.Label>
+          <div className="input-spacing">
             <Form.Control
               type="password"
               placeholder="Enter your password"
@@ -84,15 +91,15 @@ const Signup = () => {
               onChange={handleChange}
               value={formData.password}
               required
+              className="form-control"
             />
-            <Form.Control.Feedback type="invalid">Password is required!</Form.Control.Feedback>
-          </Form.Group>
+          </div>
+        </Form.Group>
 
-          <Button disabled={!(formData.username && formData.email && formData.password)} type="submit">
-            SIGN UP
-          </Button>
-        </Form>
-      </div>
+        <Button className="signup-btn" disabled={!(formData.username && formData.email && formData.password)} type="submit">
+          SIGN UP
+        </Button>
+      </Form>
     </div>
   );
 };

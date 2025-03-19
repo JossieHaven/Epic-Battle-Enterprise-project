@@ -4,7 +4,10 @@ import { Container, Card, Row, Col, Button } from "react-bootstrap";
 import { useLazyQuery, useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { SAVE_CHARACTER } from "../utils/mutations.js";
-import { saveCharacterIds, getSavedCharacterIds } from "../utils/localStorage.js";
+import {
+  saveCharacterIds,
+  getSavedCharacterIds,
+} from "../utils/localStorage.js";
 import type { Character } from "../models/Character.js";
 import SearchForm from "../components/SearchForm.js"; // Import SearchForm component
 import { SEARCH_CHARACTER } from "../utils/queries.js";
@@ -12,9 +15,12 @@ import { SEARCH_CHARACTER } from "../utils/queries.js";
 const SearchCharacters = () => {
   const [searchedCharacters, setSearchedCharacters] = useState<Character[]>([]);
   const [searchInput, setSearchInput] = useState("");
-  const [savedCharacterIds, setSavedCharacterIds] = useState(getSavedCharacterIds());
+  const [savedCharacterIds, setSavedCharacterIds] = useState(
+    getSavedCharacterIds()
+  );
 
-  const [searchCharacter, { loading, error, data }] = useLazyQuery(SEARCH_CHARACTER);
+  const [searchCharacter, { loading, error, data }] =
+    useLazyQuery(SEARCH_CHARACTER);
   const [saveCharacter] = useMutation(SAVE_CHARACTER);
 
   useEffect(() => {
@@ -44,13 +50,16 @@ const SearchCharacters = () => {
         speed: character.speed || "",
         durability: character.durability || "",
         power: character.power || "",
-        combat: character.combat || ""
+        combat: character.combat || "",
       }));
       setSearchedCharacters(characterData);
     }
   }, [data]);
 
-  const handleSaveCharacter = async (characterId: string, alignment: "hero" | "villain") => {
+  const handleSaveCharacter = async (
+    characterId: string,
+    alignment: "hero" | "villain"
+  ) => {
     const characterToSave: Character = searchedCharacters.find(
       (character) => character.characterId === characterId
     )!;
@@ -61,10 +70,15 @@ const SearchCharacters = () => {
     localStorage.setItem(alignment, JSON.stringify(characterToSave));
 
     try {
-      const { data } = await saveCharacter({ variables: { ...characterToSave } });
+      const { data } = await saveCharacter({
+        variables: { ...characterToSave },
+      });
 
       if (data.saveCharacter) {
-        setSavedCharacterIds([...savedCharacterIds, characterToSave.characterId]);
+        setSavedCharacterIds([
+          ...savedCharacterIds,
+          characterToSave.characterId,
+        ]);
       }
     } catch (err) {
       console.error(err);
@@ -94,7 +108,13 @@ const SearchCharacters = () => {
         </h2>
         <Row>
           {searchedCharacters.map((character) => (
-            <Col xs={12} sm={6} md={4} className="mb-4" key={character.characterId}>
+            <Col
+              xs={12}
+              sm={6}
+              md={4}
+              className="mb-4"
+              key={character.characterId}
+            >
               <Card className="character-card">
                 {character.image && (
                   <Card.Img
@@ -108,28 +128,42 @@ const SearchCharacters = () => {
                   <Card.Title>{character.name}</Card.Title>
                   <p className="small">Publisher: {character.publisher}</p>
                   <p className="small">Alignment: {character.alignment}</p>
-                  <p className="small">Intelligence: {character.intelligence ?? "N/A"}</p>
-                  <p className="small">Strength: {character.strength ?? "N/A"}</p>
+                  <p className="small">
+                    Intelligence: {character.intelligence ?? "N/A"}
+                  </p>
+                  <p className="small">
+                    Strength: {character.strength ?? "N/A"}
+                  </p>
                   <p className="small">Speed: {character.speed ?? "N/A"}</p>
-                  <p className="small">Durability: {character.durability ?? "N/A"}</p>
+                  <p className="small">
+                    Durability: {character.durability ?? "N/A"}
+                  </p>
                   <p className="small">Power: {character.power ?? "N/A"}</p>
                   <p className="small">Combat: {character.combat ?? "N/A"}</p>
-                  
+
                   {Auth.loggedIn() && (
                     <>
                       <Button
-                        disabled={savedCharacterIds.includes(character.characterId)}
+                        disabled={savedCharacterIds.includes(
+                          character.characterId
+                        )}
                         className="btn-block btn-info character-btn"
-                        onClick={() => handleSaveCharacter(character.characterId, "hero")}
+                        onClick={() =>
+                          handleSaveCharacter(character.characterId, "hero")
+                        }
                       >
                         {savedCharacterIds.includes(character.characterId)
                           ? "This character has already been saved!"
                           : "Hero"}
                       </Button>
                       <Button
-                        disabled={savedCharacterIds.includes(character.characterId)}
+                        disabled={savedCharacterIds.includes(
+                          character.characterId
+                        )}
                         className="btn-block btn-info character-btn"
-                        onClick={() => handleSaveCharacter(character.characterId, "villain")}
+                        onClick={() =>
+                          handleSaveCharacter(character.characterId, "villain")
+                        }
                       >
                         {savedCharacterIds.includes(character.characterId)
                           ? "This character has already been saved!"

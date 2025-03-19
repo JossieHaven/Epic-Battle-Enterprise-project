@@ -8,19 +8,19 @@ import {
   login,
 } from "../../controllers/character-controller.js";
 
-// import middleware
+// Import middleware
 import { authenticateToken } from "../../services/auth.js";
 
-// put authMiddleware anywhere we need to send a token for verification of user
+// Route to create a user and save a character (requires authentication)
 router.route("/").post(createUser).put(authenticateToken, saveCharacter);
 
+// Login route
 router.route("/login").post(login);
 
+// Get user profile (authentication required)
 router.route("/me").get(authenticateToken, getSingleUser);
 
-router.route('/characters/:characterId').delete(authenticateToken, deleteCharacter);
-router
-  .route("/characters/:characterId")
-  .delete(authenticateToken, deleteCharacter);
+// Delete a saved character (authentication required)
+router.route("/characters/:characterId").delete(authenticateToken, deleteCharacter);
 
 export default router;

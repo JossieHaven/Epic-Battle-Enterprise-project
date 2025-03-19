@@ -1,50 +1,65 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
-import { fetchUserProfile, fetchUserFavorites, fetchUserBattles, updateUserProfile } from "../services/api";
+import './UserProfile.css';
+import { fetchUserBattles, fetchUserFavorites, fetchUserProfile, updateUserProfile } from "../services/api";
 
+// Define the User type
 interface User {
     id: string;
     username: string;
     email: string;
 }
 
-function UserProfile() {
+export function UserProfile() {
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
     const [user, setUser] = useState<User | null>(null);
-    const [favorites, setFavorites] = useState<string[]>([]);
-    const [battles, setBattles] = useState<any[]>([]);
+    const [favorites] = useState<string[]>([]);
+    const [battles] = useState<any[]>([]);
     const [editMode, setEditMode] = useState(false);
     const [updatedUsername, setUpdatedUsername] = useState("");
+    const [loading, setLoading] = useState(true);
     const [updatedEmail, setUpdatedEmail] = useState("");
+    useEffect(() => {
+        if (!auth?.user) {
+            navigate("/login");
+        } else {
+            const loadUserData = async () => {
+                try {
+                    setLoading(true);
+                    if (!auth.user) return;
+                    const userData = await fetchUserProfile(auth.user.id);
+                    setUser(userData);
+                    setUpdatedUsername(userData.username);
+                    setUpdatedEmail(userData.email);
 
-    // useEffect(() => {
-    //     if (!auth?.user) {
-    //         navigate("/login");
-    //     } else {
-    //         const loadUserData = async () => {
-    //             try {
-    //                 if (!auth.user) return;
-    //                 const userData = await fetchUserProfile(auth.user.id);
-    //                 setUser(userData);
-    //                 setUpdatedUsername(userData.username);
-    //                 setUpdatedEmail(userData.email);
+                    const favoriteCharacters = await fetchUserFavorites(auth.user.id);
+                    setFavorites(favoriteCharacters);
 
-    //                 const favoriteCharacters = await fetchUserFavorites(auth.user.id);
-    //                 setFavorites(favoriteCharacters);
+                    const battleHistory = await fetchUserBattles(auth.user.id);
+                    setBattles(battleHistory);
+                } catch (err) {
+                    console.error("Failed to load user data", err);
+                } finally {
+                    setLoading(false);
+                }
+            };
 
-    //                 const battleHistory = await fetchUserBattles(auth.user.id);
-    //                 setBattles(battleHistory);
-    //             } catch (err) {
-    //                 console.error("Failed to load user data", err);
-    //             }
-    //         };
-
-    //         loadUserData();
-    //     }
+            loadUserData();
+        }
+    }, [auth, navigate]);
     // }, [auth, navigate]);
 
+    const handleLogout = () => {
+        localStorage.removeItem("id_token"); // Clear token
+        navigate("/userprofile"); // Redirect to login page
+        window.location.reload(); // Refresh to reset state
+    };
+
+    if (loading) return <p>Loading...</p>;
+
+    if (!auth?.user) return <p>No user found. Please log in.</p>;
     const handleUpdateProfile = async () => {
         try {
             await updateUserProfile(auth?.user?.id || "", { username: updatedUsername, email: updatedEmail });
@@ -58,6 +73,9 @@ function UserProfile() {
 
     return (
         <div className="profile-container">
+            <h2>Welcome, {auth.user?.username ?? "Guest"}</h2>
+
+            <button className="logout-btn" onClick={handleLogout}>Logout</button>
             <h2>Welcome, {user?.username}</h2>
 
             {editMode ? (
