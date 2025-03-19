@@ -6,18 +6,20 @@ const BattleArena = () => {
   const navigate = useNavigate();
   const [hero, setHero] = useState<any>(null);
   const [villain, setVillain] = useState<any>(null);
+  
 
-
-  useEffect(() => {
-    // Retrieve hero and villain from localStorage
-    const storedHero = localStorage.getItem("hero");
-    const storedVillain = localStorage.getItem("villain");
-
-    if (storedHero && storedVillain) {
-      setHero(JSON.parse(storedHero));
-      setVillain(JSON.parse(storedVillain));
-    }
-  }, []);
+    useEffect(() => {
+      // Retrieve hero and villain from localStorage
+      const storedHero = localStorage.getItem("hero");
+      const storedVillain = localStorage.getItem("villain");
+    
+      if (storedHero) {
+        setHero(JSON.parse(storedHero));
+      }
+      if (storedVillain) {
+        setVillain(JSON.parse(storedVillain));
+      }
+    }, []);
 
 
   if (!hero || !villain) {
