@@ -10,7 +10,7 @@ function UserProfile() {
     const [battles, setBattles] = useState<{ opponent: string; result: string }[]>([]);
     const [loading, setLoading] = useState(true);
 
-    useEffect(() => {
+    // useEffect(() => {
     //     if (auth === undefined) return; // Prevent running before auth is defined
         
     //     if (!auth?.user) {
