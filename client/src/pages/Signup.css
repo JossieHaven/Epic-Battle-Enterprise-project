@@ -33,8 +33,8 @@ body {
 .signup-title {
   font-size: 2.5rem;
   font-family: "Bangers", cursive;
-  color: #e5e5e5 !important;
-  text-shadow: 3px 3px #080707 !important;
+  color: #e5e5e5;
+  text-shadow: 3px 3px #080707;
   margin-bottom: 20px;
 }
 
@@ -70,23 +70,24 @@ body {
 }
 
 /* --- SIGNUP BUTTON (Same as Login) --- */
-.signup-btn {
-    font-size: 1.4rem;
-    font-family: "Bangers", cursive;
-    background: #850707 !important;
-    color: #fff; /* Ensures white text */
-    padding: 14px 22px;
-    border: 5px solid #e54947 !important;
-    border-radius: 50px !important;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
+.signup-form .signup-btn {
+  font-size: 1.4rem;
+  font-family: "Bangers", cursive;
+  background: #850707 !important;
+  color: #fff;
+  padding: 14px 22px;
+  border: 5px solid #e54947 !important;
+  border-radius: 50px !important;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-.signup-btn:hover {
-    background: #ffcc00;
-    color: #fff !important; /* ✅ Fix: Keeps text white on hover */
-    transform: scale(1.07);
+.signup-form .signup-btn:hover {
+  background: #ffcc00;
+  color: #fff !important;
+  transform: scale(1.07);
 }
+
 
 /* --- ERROR MESSAGE (Hidden by Default) --- */
 .invalid-feedback {
