@@ -126,10 +126,10 @@ git push origin feature/yourFeature
 
 5. Open a pull request for review.
 
-##Deployed Website
+## Deployed Website
 [Deployed-Website]([https://github.com/je210506](https://epic-battle-enterprise-9ju0.onrender.com/))
 
-##GitHub Repository
+## Github Repository
 
 [GitHub-Repo]([https://github.com/je210506](https://github.com/JossieHaven/Epic-Battle-Enterprise-project))
 
