@@ -77,9 +77,9 @@ View AI-generated battle results, including dynamic storytelling.
 
 React
 
-TypeScript
+Tailwind CSS
 
-Axios
+UIVerse.io
 
 
 ### Backend (Node.js + Express + MongoDB)
@@ -98,7 +98,7 @@ dotenv
 
 
 ## License 
-This project is not licensed. 
+MIT License
 
 
 ## Contributing 
