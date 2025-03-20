@@ -1,5 +1,6 @@
 .battle-container {
     display: flex;
+    margin-top: 40px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -97,7 +98,6 @@
     color: yellow;
   }
   
-  /* Responsive Design */
   @media (max-width: 1100px) {
     .battle-cards-row {
       flex-direction: column;
@@ -115,7 +115,6 @@
     }
   }
   
-  /* Character Details */
   .character-name {
     font-size: 1.6rem;
     font-weight: bold;
@@ -143,17 +142,8 @@
     font-weight: bold;
   }
 
-  /* --- GENERATE AI BATTLE BUTTON --- */
 .generate-battle-btn {
-  background: linear-gradient(135deg, #ffcc00, #ff3300);
-  font-family: "Bangers", cursive;
-  color: #222;
-  padding: 14px 22px;
-  font-size: 1.4rem;
-  border: 4px solid #e54947;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   display: inline-block;
   margin-top: 20px;
@@ -165,3 +155,78 @@
   transform: scale(1.1);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
+.generate-battle-btn {
+  background: linear-gradient(135deg, #00aaff, #0056b3);
+  color: white;
+  border: 3px solid #003366;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  font-family: 'Oswald', sans-serif;
+  box-shadow: 0 0 15px rgba(0, 174, 255, 0.7);
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  
+}
+
+.generate-battle-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #003366);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 174, 255, 1);
+}
+
+.generate-battle-btn:active {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.generate-battle-btn::before {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.change-character-btn {
+  background: linear-gradient(135deg, #ff0000, #990000);
+  color: white;
+  border: 3px solid #660000;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  font-family: 'Oswald', sans-serif;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.change-character-btn:hover {
+  background: linear-gradient(135deg, #990000, #660000);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+}
+
+.change-character-btn:active {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.change-character-btn::before {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .generate-battle-btn, .change-character-btn {
+    font-size: 1rem;
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
+
+  .generate-battle-btn::before, .change-character-btn::before {
+    font-size: 1.2rem;
+  }
+}
+

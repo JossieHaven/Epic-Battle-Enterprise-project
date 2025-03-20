@@ -90,8 +90,7 @@
     margin-bottom: 1.5rem !important;
   }
 
- /* Hero Button - More Epic and Bright */
-.character-btn.hero {
+ .character-btn.hero {
   background: linear-gradient(135deg, #00aaff, #0056b3);
   color: white;
   border-color: #003366;
@@ -108,19 +107,16 @@
   box-shadow: 0 0 20px rgba(0, 174, 255, 1);
 }
 
-/* Hero Button Active Effect */
 .character-btn.hero:active {
   transform: scale(1.05);
   filter: brightness(1.2);
 }
 
-/* Hero Icon (Optional) */
 .character-btn.hero::before {
   content: "⚡";
   font-size: 1.5rem;
 }
 
-/* Villain Button - Darker and More Intimidating */
 .character-btn.villain {
   background: linear-gradient(135deg, #ff0000, #990000);
   color: white;
@@ -138,19 +134,16 @@
   box-shadow: 0 0 20px rgba(255, 0, 0, 1);
 }
 
-/* Villain Button Active Effect */
 .character-btn.villain:active {
   transform: scale(1.05);
   filter: brightness(1.2);
 }
 
-/* Villain Icon (Optional) */
 .character-btn.villain::before {
   content: "🔥";
   font-size: 1.5rem;
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
   .character-btn {
     font-size: 1rem;
