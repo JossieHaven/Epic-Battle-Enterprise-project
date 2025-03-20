@@ -4,6 +4,12 @@ export interface Character {
     characterId: string;
     image: string;
     name: string;
-    powerstats: {intelligence: number, strength: number, speed: number, durability: number, power: number, combat: number}
+    alignment: string;
+    intelligence: string;
+    strength: string;
+    speed: string; 
+    durability: string;
+    power: string;
+    combat: string;
   }
   

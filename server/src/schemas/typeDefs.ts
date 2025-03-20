@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from "graphql-tag";
 
 const typeDefs = gql`
   type User {
@@ -12,19 +12,27 @@ const typeDefs = gql`
   type Character {
     characterId: String!
     name: String!
-    powerstats: PowerstatsInput
-    publisher: String!
-    allignment: String!
-    gender: String!
-    race: String
-    description: String!
+    fullName: String
+    publisher: String
+    alignment: String
+    intelligence: String
+    strength: String
+    speed: String
+    durability: String
+    power: String
+    combat: String
     image: String
   }
 
   input CharacterInput {
     characterId: String!
     name: String!
-    powerstats: PowerstatsInput
+    intelligence: String
+    strength: String
+    speed: String
+    durability: String
+    power: String
+    combat: String
     description: String!
     image: String
   }
@@ -34,14 +42,14 @@ const typeDefs = gql`
     email: String!
     password: String!
   }
-  input PowerstatsInput {
-  intelligence: number!,
-    strength: number!,
-    speed: number!,
-    durability: number!,
-    power: number!,
-    combat: number!
-}
+  # input PowerstatsInput {
+  #   intelligence: Int!
+  #   strength: Int!
+  #   speed: Int!
+  #   durability: Int!
+  #   power: Int!
+  #   combat: Int!
+  # }
   type Auth {
     token: ID!
     user: User
@@ -51,13 +59,27 @@ const typeDefs = gql`
     users: [User]
     user(username: String!): User
     me: User
+    searchCharacter(name: String!): [Character]
   }
 
   type Mutation {
     addUser(userData: UserInput!): Auth
     login(email: String!, password: String!): Auth
-    saveCharacter(characterId: String!, name: String!, powerstats: PowerstatsInput!, description: String!, image: String): User
+    saveCharacter(
+      id: ID!
+      name: String!
+      publisher: String
+      alignment: String
+      image: String
+      intelligence: String
+      strength: String
+      speed: String
+      durability: String
+      power: String
+      combat: String
+    ): Character
     removeCharacter(characterId: String!): User
+    generateBattlePrompt(hero: String!, villain: String!): String!
   }
 `;
 

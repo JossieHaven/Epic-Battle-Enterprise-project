@@ -1,0 +1,232 @@
+.battle-container {
+    display: flex;
+    margin-top: 40px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: #1a1a1a;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  .battle-cards-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    gap: 50px;
+  }
+  
+  .character-card {
+    width: 400px;
+    min-height: 400px;
+    background-color: #282c34;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+    position: relative;
+  }
+  
+  .label {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    padding: 5px 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 5px;
+    text-transform: uppercase;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
+  }
+  
+  .hero-label {
+    color: #ffffff;
+    background-color: #3498db;
+  }
+  
+  .villain-label {
+    color: #ffffff;
+    background-color: #e74c3c;
+  }
+  
+  .hero-card {
+    border: 3px solid #3498db;
+  }
+  
+  .villain-card {
+    border: 3px solid #e74c3c;
+  }
+ 
+  .battle-narration {
+    flex-grow: 2;
+    min-height: 650px;
+    background-color: #333;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0px 6px 15px rgba(255, 255, 255, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 700px;
+  }
+  
+  .narration-text {
+    font-size: 1rem;
+    font-style: italic;
+    color: #ddd;
+    margin-top: 15px;
+  }
+  
+  .vs-text {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: yellow;
+  }
+  
+  @media (max-width: 1100px) {
+    .battle-cards-row {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .battle-narration {
+      max-width: 90%;
+      min-height: 300px;
+    }
+  
+    .character-card {
+      width: 280px;
+      min-height: 450px;
+    }
+  }
+  
+  .character-name {
+    font-size: 1.6rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .character-image {
+    width: 100%;
+    max-width: 250px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .stats {
+    font-size: 1rem;
+    text-align: left;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+  }
+  
+  .stats p {
+    margin: 5px 0;
+    font-weight: bold;
+  }
+
+.generate-battle-btn {
+   transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.generate-battle-btn:hover {
+  background: #ffcc00;
+  color: #000;
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+.generate-battle-btn {
+  background: linear-gradient(135deg, #00aaff, #0056b3);
+  color: white;
+  border: 3px solid #003366;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  font-family: 'Oswald', sans-serif;
+  box-shadow: 0 0 15px rgba(0, 174, 255, 0.7);
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+  
+}
+
+.generate-battle-btn:hover {
+  background: linear-gradient(135deg, #0056b3, #003366);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 174, 255, 1);
+}
+
+.generate-battle-btn:active {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.generate-battle-btn::before {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+.change-character-btn {
+  background: linear-gradient(135deg, #ff0000, #990000);
+  color: white;
+  border: 3px solid #660000;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  font-family: 'Oswald', sans-serif;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.change-character-btn:hover {
+  background: linear-gradient(135deg, #990000, #660000);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+}
+
+.change-character-btn:active {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.change-character-btn::before {
+  font-size: 1.5rem;
+  margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+  .generate-battle-btn, .change-character-btn {
+    font-size: 1rem;
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
+
+  .generate-battle-btn::before, .change-character-btn::before {
+    font-size: 1.2rem;
+  }
+}
+

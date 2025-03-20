@@ -1,0 +1,35 @@
+version: 2.1
+
+jobs:
+  start-server:
+    docker:
+      - image: cimg/node:current
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm install
+      - run:
+          name: Build the app
+          command: npm run build
+
+  deploy-to-render:
+    docker:
+      - image: cimg/base:current
+    steps:
+      - run:
+          name: Deploy to Render
+          command: |
+            echo "Deploying to Render..."
+            curl $RENDER_DEPLOY_HOOK_URL
+
+workflows:
+  deploy-to-render:
+    jobs:
+      - start-server
+      - deploy-to-render:
+          requires:
+            - start-server
+          filters:
+            branches:
+              only: main

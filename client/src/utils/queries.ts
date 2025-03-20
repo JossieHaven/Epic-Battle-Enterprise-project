@@ -1,5 +1,4 @@
-import { gql } from '@apollo/client';
-
+import { gql } from "@apollo/client";
 
 export const QUERY_ME = gql`
   query me {
@@ -13,8 +12,33 @@ export const QUERY_ME = gql`
         publisher
         description
         image
-        powerstats
+        alignment
+        intelligence
+        strength
+        speed
+        durability
+        power
+        combat
       }
+    }
+  }
+`;
+
+export const SEARCH_CHARACTER = gql`
+  query SearchCharacter($name: String!) {
+    searchCharacter(name: $name) {
+      characterId
+      name
+      fullName
+      publisher
+      alignment
+      intelligence
+      strength
+      speed
+      durability
+      combat
+      power
+      image
     }
   }
 `;

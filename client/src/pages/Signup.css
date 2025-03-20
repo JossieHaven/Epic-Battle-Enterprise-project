@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Roboto:wght@400;700&display=swap");
+
+body {
+    background: linear-gradient(135deg, #ffcc00, #ff3300);
+    background-size: cover;
+    font-family: 'Roboto Condensed', sans-serif;
+    text-align: center;
+    color: #222;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* --- SIGNUP BOX (Matching Login) --- */
+.signup-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff9800, #ff5722);
+    font-family: "Bangers", cursive;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    width: 400px;
+    text-align: center;
+}
+
+/* --- SIGNUP TITLE (Matching Login) --- */
+.signup-title {
+  font-size: 2.5rem;
+  font-family: "Bangers", cursive;
+  color: #e5e5e5;
+  text-shadow: 3px 3px #080707;
+  margin-bottom: 20px;
+}
+
+/* --- FORM STYLING (Same as Login) --- */
+.signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+/* --- LABELS (Same as Login) --- */
+.signup-form .form-label {
+    font-size: 1.4rem;
+    color: #ffcc00;
+    margin-bottom: 6px;
+    text-shadow: 3px 3px #000;
+}
+
+/* --- INPUT FIELDS (Same as Login) --- */
+.signup-form .form-control {
+    padding: 14px;
+    font-size: 1.2rem;
+    border: 2px solid #ffcc00;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.signup-form .form-control:focus {
+    border-color: #ff3300;
+    box-shadow: 0 0 12px #ff3300;
+}
+
+/* --- SIGNUP BUTTON (Same as Login) --- */
+.signup-form .signup-btn {
+  font-size: 1.4rem;
+  font-family: "Bangers", cursive;
+  background: #850707 !important;
+  color: #fff;
+  padding: 14px 22px;
+  border: 5px solid #e54947 !important;
+  border-radius: 50px !important;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.signup-form .signup-btn:hover {
+  background: #ffcc00;
+  color: #fff !important;
+  transform: scale(1.07);
+}
+
+
+/* --- ERROR MESSAGE (Hidden by Default) --- */
+.invalid-feedback {
+    display: none;
+    color: #d32f2f;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.show-error {
+    display: block;
+}

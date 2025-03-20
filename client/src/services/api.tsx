@@ -1,15 +1,22 @@
 import axios from "axios";
 
-const API_BASE_URL = "http://localhost:5000/api/leaderboard";
+const API_BASE_URL = "http://localhost:3000/api/users";
 
-export const fetchLeaderboard = async (sortBy: string = "power", alignment: string = "all") => {
-    let url = API_BASE_URL;
-    if (alignment !== "all") {
-        url = `${API_BASE_URL}/filter/${alignment}`;
-    } else {
-        url = `${API_BASE_URL}/sort/${sortBy}`;
-    }
+export const fetchUserProfile = async (userId: string) => {
+    const response = await axios.get(`${API_BASE_URL}/${userId}`);
+    return response.data;
+};
 
-    const response = await axios.get(url);
+export const updateUserProfile = async (userId: string, profileData: any) => {
+    return axios.put(`${API_BASE_URL}/${userId}`, profileData);
+};
+
+export const fetchUserFavorites = async (userId: string) => {
+    const response = await axios.get(`${API_BASE_URL}/${userId}/favorites`);
+    return response.data;
+};
+
+export const fetchUserBattles = async (userId: string) => {
+    const response = await axios.get(`${API_BASE_URL}/${userId}/battles`);
     return response.data;
 };

@@ -19,7 +19,6 @@ const startApolloServer = async () => {
   // Connect to the database
   await db();
 
-  // Set up Express app
   const app = express();
   const PORT = process.env.PORT || 3001;
 
@@ -30,9 +29,8 @@ const startApolloServer = async () => {
   // Apollo server as middleware
   app.use(
     '/graphql',
-    expressMiddleware(server as any,
-    {
-      context: authenticateToken as any, // Token authentication middleware
+    expressMiddleware(server, {
+      context: authenticateToken, // Token authentication middleware
     })
   );
 
@@ -53,21 +51,16 @@ const startApolloServer = async () => {
   });
 };
 
-
 // dotenv.config();
 // connectDB();
 
-const app = express();
-const PORT = process.env.PORT || 5000;
+// const app = express();
+// const PORT = process.env.PORT || 5001;
 
-app.use(cors());
-app.use(express.json());
+// app.use(cors());
+// app.use(express.json());
 // app.use("/api/leaderboard", leaderboardRoutes);
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 startApolloServer();
-function cors(): any {
-  throw new Error('Function not implemented.');
-}
-
