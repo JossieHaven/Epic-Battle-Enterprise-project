@@ -26,6 +26,17 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
   }
+
+  .char-name {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #d95301; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-align: center;
+    font-family: bangers, cursive;
+
+  }
   
   .character-info {
     padding: 15px;
@@ -34,7 +45,6 @@
 
   .character-info p {
     margin: 5px 0;
-    font-size: 0.9rem;
   }  
 
   .character-btn-container {
@@ -44,27 +54,33 @@
     margin-top: 10px;
   }
  
+
   .character-btn {
-    width: 100%;
     font-weight: bold;
-    margin-top: 10px;
     font-size: 1rem;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 5px;
-    background: linear-gradient(135deg, #f87804, #fdcf03);
-    color: white;
-    border: none;
-    transition:  0.3s ease-in-out;
+    padding: 12px 16px;
+    border-radius: 8px;
+    width: 100%;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    border: 3px solid;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
   }
 
   .character-btn:hover {
     background: linear-gradient(135deg, #fdcf03, #f87804);
   }
 
-  /* Text Styles for the cards */
   .character-info p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #b43838;
   font-family: bangers, cursive;
   letter-spacing: 1px;
@@ -73,3 +89,70 @@
   .mb-4 {
     margin-bottom: 1.5rem !important;
   }
+
+ .character-btn.hero {
+  background: linear-gradient(135deg, #00aaff, #0056b3);
+  color: white;
+  border-color: #003366;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  font-family: 'Oswald', sans-serif;
+  box-shadow: 0 0 15px rgba(0, 174, 255, 0.7);
+}
+
+.character-btn.hero:hover {
+  background: linear-gradient(135deg, #0056b3, #003366);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(0, 174, 255, 1);
+}
+
+.character-btn.hero:active {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.character-btn.hero::before {
+  content: "⚡";
+  font-size: 1.5rem;
+}
+
+.character-btn.villain {
+  background: linear-gradient(135deg, #ff0000, #990000);
+  color: white;
+  border-color: #660000;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+  font-size: 1.2rem;
+  font-family: 'Oswald', sans-serif;
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+}
+
+.character-btn.villain:hover {
+  background: linear-gradient(135deg, #990000, #660000);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+}
+
+.character-btn.villain:active {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+.character-btn.villain::before {
+  content: "🔥";
+  font-size: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .character-btn {
+    font-size: 1rem;
+    padding: 10px 12px;
+    border-radius: 6px;
+  }
+
+  .character-btn.hero::before,
+  .character-btn.villain::before {
+    font-size: 1.2rem;
+  }
+}

@@ -14,12 +14,12 @@ const isAuthenticated = (): boolean => {
 const Home = () => {
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState<boolean>(isAuthenticated());
-  const [buttonText, setButtonText] = useState<string>(isAuthenticated() ? "BATTLE" : "ENTER");
+  const [buttonText, setButtonText] = useState<string>(isAuthenticated() ? "START" : "ENTER");
 
   useEffect(() => {
     const loggedIn = isAuthenticated();
     setIsLoggedIn(loggedIn);
-    setButtonText(loggedIn ? "BATTLE" : "ENTER");
+    setButtonText(loggedIn ? "START" : "ENTER");
   }, []);
 
   const handleBattleClick = () => {

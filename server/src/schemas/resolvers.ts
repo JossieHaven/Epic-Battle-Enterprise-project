@@ -185,7 +185,7 @@ const resolvers = {
 
     async generateBattlePrompt(_: any, { hero, villain }: any) {
       const inputText = `
-      Write a four-paragraph battle story where ${hero} (Hero) and ${villain} (Villain) fight. Use their power stats to guide their attacks, defenses, and strategies:
+      Write a two-paragraph battle story where ${hero} (Hero) and ${villain} (Villain) fight. Use their power stats to guide their attacks, defenses, and strategies:
 
       ${hero}'s stats: Intelligence - ${hero.intelligence}, Strength - ${hero.strength}, Speed - ${hero.speed}, Durability - ${hero.durability}, Power - ${hero.power}, Combat - ${hero.combat}.
       ${villain}'s stats: Intelligence - ${villain.intelligence}, Strength - ${villain.strength}, Speed - ${villain.speed}, Durability - ${villain.durability}, Power - ${villain.power}, Combat - ${villain.combat}.

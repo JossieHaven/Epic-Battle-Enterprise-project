@@ -128,7 +128,7 @@ const SearchCharacters = () => {
                   />
                 )}
                 <Card.Body className="character-info">
-                  <Card.Title><p className="char-name">🎭{character.name}</p></Card.Title>
+                  <Card.Title><h4 className="char-name">🎭{character.name}</h4></Card.Title>
                   <p className="small">📝 Publisher: {character.publisher}</p>
                   <p className="small">☯️ Alignment: {character.alignment}</p>
                   <p className="small">
@@ -146,11 +146,12 @@ const SearchCharacters = () => {
 
                   {Auth.loggedIn() && (
                     <>
+                    
                       <Button
                         disabled={savedCharacterIds.includes(
                           character.characterId
                         )}
-                        className="btn-block btn-info character-btn"
+                        className="btn-block btn-info character-btn hero"
                         onClick={() =>
                           handleSaveCharacter(character.characterId, "hero")
                         }
@@ -163,7 +164,7 @@ const SearchCharacters = () => {
                         disabled={savedCharacterIds.includes(
                           character.characterId
                         )}
-                        className="btn-block btn-info character-btn"
+                        className="btn-block btn-info character-btn villain"
                         onClick={() =>
                           handleSaveCharacter(character.characterId, "villain")
                         }
